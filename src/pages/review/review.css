@@ -1,0 +1,42 @@
+.review{
+    background-color: white;
+    height: 525px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    overflow-y: auto;
+    padding: 20px 25px;
+}
+.review img{
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    cursor:default
+}
+.review i {
+    color: #dadada;
+    font-size: 21px;
+    margin-right: 2px;
+    cursor: pointer;
+}
+.review .rating {
+    color: #2baae9;
+}
+.review .active{
+    background-color: rgb(97, 197, 247);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+@media only screen and (max-width: 768px) {
+    .review{
+        background-color: white;
+        height: 490px;
+        flex: 100%;
+    }
+  }

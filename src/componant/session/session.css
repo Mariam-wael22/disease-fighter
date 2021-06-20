@@ -1,0 +1,5 @@
+.active-session .active {
+    background-color: rgb(97, 197, 247);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}

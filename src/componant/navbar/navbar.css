@@ -1,0 +1,103 @@
+nav{
+    width: 100%;
+    height: 80px;
+    background-color: #f4f4f4;
+    padding-top: 15px;
+}
+.notifi-icon{
+    display: flex;
+    background-color: white;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+.notifi-data{
+    width: 375px;
+    height: 540px;
+    background-color: white;
+    position: absolute;
+    top: 66px;
+    left: -108px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    z-index: 1;
+    padding: 0px 10px;
+}
+.num-notifi{
+    color: red;
+    font-size: 20px;
+    font-weight: 600;
+    top: 1px;
+    right: 2px;
+}
+.logout-data{
+    width: 267px;
+    height: 132px;
+    position: absolute;
+    top: 66px;
+    left: 103px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+}
+.logout-data p,label,img{
+    cursor: pointer;
+}
+.profile .logout{
+    cursor: pointer;
+}
+.profile img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+nav .logout p, nav .logout svg{
+    color: #14274E;
+    
+}
+.search svg{
+    top: 11px;
+    left: 20px;
+    margin-right: 12px;
+    color: #8A9EAD;
+}
+.search input[type=search]{
+    color: #8A9EAD;
+}
+.active-notifi{
+    color: white;
+    background-color: #61C5F7;
+}
+.active-toggle{
+    background-color: #f4f4f4;
+    width: 100%;
+    padding-bottom: 11px;
+    z-index: 1;
+}
+@media only screen and (max-width: 768px) {
+    .logo{
+        flex: 50%;
+    }
+    .nav-toggle{
+        display: block;
+        cursor: pointer;
+    }
+    .notifi-data{
+        left: -238px;
+        width: 336px;
+    }
+  }

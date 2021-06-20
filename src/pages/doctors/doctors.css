@@ -1,0 +1,92 @@
+.all-doctors{
+    height: 510px;
+    background-color: white;
+    margin-right: 15px;
+    flex: 50%;
+    padding: 20px 10px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+}
+.all-doctors2{
+    height: 100%;
+    overflow-y: auto;
+}
+.all-doctors h3{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.appointment{
+    height: 520px;
+    padding: 20px 10px;
+    background-color: white;
+    overflow-y: auto;
+    flex: 40%;
+    border-radius: 7px;
+}
+.appointment .doctor-avatar{
+    width: 100%;
+    height: 130px;
+}
+.appointment .doctor-avatar img{
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.appointment p{
+    color: #8a9ead;
+}
+.appointment .alldoctor-data{
+    background-color: #f4f4f4;
+    width: 100%;
+    min-height: 200px;
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+.appointment .alldoctor-data i{
+    color: #dadada;
+}
+.appointment .alldoctor-data .rating{
+    color: gold;
+    margin-top: 10px;
+}
+.appointment .alldoctor-data .dates{
+    width: 80%;
+    height: 30px;
+    margin-bottom: 5px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.appointment .alldoctor-data p{
+    padding-top: 11px;
+}
+.appointment .alldoctor-data svg{
+    color: #8a9ead;
+}
+@media only screen and (max-width: 868px) {
+    .appointment{
+        flex: 100%;
+        height: 493px;
+    }
+    .about{
+        flex: 60%;
+    }
+    .stars{
+        flex: 40%;
+    }
+    .appointment .alldoctor-data .dates{
+        width: 100%;
+    }
+    .appointment .alldoctor-data svg{
+        margin: 0px;
+    }
+  }

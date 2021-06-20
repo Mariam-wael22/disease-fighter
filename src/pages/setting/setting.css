@@ -1,0 +1,105 @@
+.setting .main-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.setting .active-btn{
+    background-color: rgb(97, 197, 247);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    margin-top: 7px;
+}
+.more-setting{
+    height: 120px;
+    background-color: white;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    margin-right: 40px;
+    text-align: center;
+}
+.main-setting{
+    height:500px;
+    background-color: white;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    overflow-y: auto;
+}
+.security-setting{
+    height:500px;
+    background-color: white;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+}
+.more-setting div{
+    height: 60px;
+    padding-top: 25px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    cursor: pointer;
+}
+
+.more-setting .active{
+    color: #4c5b66;
+    height: 100%;
+    border-bottom: 1px solid #59656e;
+    font-weight: 700;
+}
+.update-img img{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.update-img i{
+    position: absolute;
+    bottom: 22px;
+    right: 15px;
+    color: #3f4950;
+    cursor: pointer;
+}
+.update-img2{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    z-index: 0;
+}
+.update-img{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@media only screen and (max-width: 768px) {
+    .main-setting{
+        flex: 100%;
+    }
+    .security-setting{
+        flex: 100%;
+    }
+    .more-setting div{
+        height: 40px;
+        padding-top: 15px;
+        font-size: 14px;
+    }
+    .more-setting{
+        height: 80px;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+    .main-setting{
+        height:400px;
+    }
+}

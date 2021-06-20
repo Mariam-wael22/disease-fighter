@@ -1,0 +1,15 @@
+.menu{
+    background-color: #f4f4f4;
+    height: 545px;
+}
+.menu h3{
+    margin-left: 30px;
+    margin-top: 62px;
+    margin-bottom: 47px;
+}
+
+@media only screen and (max-width: 768px) {
+    .menu{
+        display: none;
+    }
+  }

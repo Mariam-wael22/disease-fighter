@@ -1,0 +1,20 @@
+.go-next{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    background-color: #CCCCCC;
+    cursor: pointer;
+}
+.go-next-container{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+}
+.signup h2{
+    font-size: 20px;
+    margin-bottom: 10px;
+}

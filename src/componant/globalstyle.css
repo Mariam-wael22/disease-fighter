@@ -1,0 +1,155 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+  }
+.container1{
+    width: 95%;
+    margin: auto;
+}
+.logo img{
+    width: 130px;
+    height: 50px;
+    cursor: pointer;
+}
+.main-container{
+    background-color: #FBFBFB;
+    max-height: 545px;
+    padding: 18px 30px; 
+}
+
+/* login and signup style */
+.login{
+    width: 100%;
+    height: 625px;
+}
+.login-container{
+    width: 500px;
+    height: 100%;
+    z-index: 10;
+    margin: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0px;
+    align-items: center;
+}
+.login-content{
+    background-color: white;
+    width: 80%;
+    margin: auto;
+    min-height: 540px;
+    max-height: 540px;
+    margin-top: 10px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    overflow-y: auto;
+    padding: 10px 25px;
+}
+.background-login{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-image: url('../image//login-bg.jpg');
+    filter: blur(10px);
+    background-position: center;
+    background-size: cover;
+    -webkit-filter: blur(10px);
+}
+label{
+    color: #8A9EAD;
+    margin-bottom: 2px;
+}
+.form-control{
+    height: 42px;
+    background-color: #CCCCCC;
+}
+.form-control:focus{
+    outline: none;
+    box-shadow: none;
+    background-color: white;
+    border: none;
+}
+h2 {
+    color: #14274e;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+.login .active{
+    background-color: rgb(97, 197, 247);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+.logout-icon svg{
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    cursor: pointer;
+    margin-left: 12px;
+}
+.logout-word p{
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+
+.alt-login{
+    width: 55px;
+    height: 55px;
+    background-color: white;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 4px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+.alt-login img{
+    width: 16px;
+    height: 20px;
+}
+.signup-link{
+    color: #14274e;
+    text-decoration: none;
+}
+.signin .login-content{
+    min-height: 480px;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .main-container{
+        flex: 100%;
+        padding: 10px 20px;
+    }
+    .login-container{
+        width: 100%;
+        height: 500px;
+    }
+    .signup .login-content{
+        width: 90%;
+        min-height: 540px;
+        max-height: 540px;
+    }
+    .logout-icon svg {
+        width: 18px;
+        height: 18px;
+        margin-right: 6px;
+        margin-left: 22px;
+        color: #8A9EAD;
+    }
+    .logout-word p{
+        font-size: 17px;
+        color: #8A9EAD;
+    }
+
+  }

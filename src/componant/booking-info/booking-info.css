@@ -1,0 +1,34 @@
+.booking-info{
+    padding: 0px 20px;
+}
+.booking-info .active {
+    background-color: rgb(97, 197, 247);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+.booking-info .delete{
+    background-color: red;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    margin-right: 7px;
+}
+textarea.form-control{
+    height: 70px;
+}
+.gender{
+    width: 50%;
+}
+@media only screen and (max-width: 768px) {
+    .booking-info{
+        padding: 0px 0px;
+    }
+    .booking-info .active {
+        font-size: 14px;
+    }
+    .phone-gender{
+        flex-direction: column;
+    }
+    .gender{
+        width: 100%;
+    }
+}

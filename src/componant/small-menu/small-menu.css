@@ -1,0 +1,29 @@
+.small-menu{
+    display: flex;
+    flex-direction: column;
+}
+.small-menu a{
+    text-decoration: none;
+    color: #8A9EAD;
+    font-size: 19px;
+    font-weight: 400;
+    height: 50px;
+    padding-left: 30px;
+    padding-top: 8px;
+}
+.small-menu .active{
+    background-color: #FBFBFB;
+}
+.small-menu i{
+    margin-right: 10px;
+}
+.small-menu svg{
+    margin-right: 10px;
+}
+@media only screen and (max-width: 868px) {
+    .small-menu a{
+        font-size: 17px;
+        padding-left: 20px;
+
+    }
+  }
