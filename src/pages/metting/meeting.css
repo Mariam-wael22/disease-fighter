@@ -29,3 +29,9 @@
     -ms-border-radius: 7%;
     -o-border-radius: 7%;
 }
+@media only screen and (max-width: 768px) {
+    .meeting{
+        flex: 100%;
+    }
+
+}

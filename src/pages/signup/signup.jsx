@@ -20,6 +20,7 @@ class Signup extends React.Component{
             phone:'',
             gender:null,
             specialist:null,
+            specialist_name:null,
             specializations:null,
             about:'',
             add_date:true,
@@ -42,6 +43,31 @@ class Signup extends React.Component{
                     })
                     .catch((err) => console.log(err));
     }
+
+    AddDates=(dates)=>{
+        console.log(dates)
+        console.log('hello alaa hendam')
+      fetch("https://thediseasefighter.herokuapp.com/doctors/dates", {
+          method: "POST",
+          body: JSON.stringify(dates),
+          headers: {
+            Authorization: `Bearer ${window.localStorage.getItem(
+                "token"
+            )}`,
+              "Content-Type": "application/json",
+          },
+      })
+          .then((res) => res.json())
+          .then((data) => {
+              console.log(data)
+              if(data.message==="You have created a new date"){
+
+              }
+              })
+          .catch((err) => {console.log(err)});
+     }
+
+
     check_email =(event)=>{ 
         event.preventDefault();
         const {email}=this.state;
@@ -71,6 +97,7 @@ class Signup extends React.Component{
         const {is_doctor,send_date,add_date,name,email,password,about,location,phone,gender,specialist}=this.state
         const data={'Check_email':true,'name':name,'email':email,'password':password, 'is_doctor':is_doctor,'location':location,'clinic_location':location,'phone':phone,'gender':gender, 'spec_id':specialist , 'about':about};
         console.log(data);
+        const AddDates=this.AddDates
         if(add_date){
             fetch("https://thediseasefighter.herokuapp.com/register", {
           method: "POST",
@@ -87,10 +114,11 @@ class Signup extends React.Component{
                 if(data.is_doctor===true){
                     window.localStorage.setItem('doctor',true)
                     send_date.map((dates)=>(
-                        this.AddDates=(dates)
+                        AddDates(dates)
                     ))
                   }
-                this.props.history.push('/home')
+                  this.props.history.push('/home')
+                
               }
               else{
                 this.setState({error:data.message})
@@ -101,37 +129,15 @@ class Signup extends React.Component{
         else{
             alert('please add avilable date')
         }
+
        }
        handleChange = event => {
         const { value, name } = event.target;
     
         this.setState({ [name]: value });
       }
-
-
-      AddDates=(dates)=>{
-        fetch("https://thediseasefighter.herokuapp.com/doctors/dates", {
-            method: "POST",
-            body: JSON.stringify(dates),
-            headers: {
-              Authorization: `Bearer ${window.localStorage.getItem(
-                  "token"
-              )}`,
-                "Content-Type": "application/json",
-            },
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data)
-                if(data.message==="You have created a new date"){
-
-                }
-                })
-            .catch((err) => {console.log(err)});
-       }
-
     render(){
-        const {is_doctor,send_date,date,showdate,account_info,name,email,password,confirm_password,error,about,location,phone,gender,specialist}=this.state
+        const {is_doctor,specialist_name,showdate,account_info,name,email,password,confirm_password,error,about,location,phone,gender,specialist}=this.state
         return(
             <div className='login'>
                 <div className='background-login'>
@@ -182,7 +188,7 @@ class Signup extends React.Component{
                         </div>
                         <div className='d-flex justify-content-center go-next-container'>
                                 <div className={`go-next shadow me-2 ${account_info?(null):('active')}`} onClick={()=>this.setState({account_info:false})}></div>
-                                <div className={`go-next shadow me-2 ${account_info?('active'):(null)}`} onClick={()=>this.setState({account_info:true})}></div>
+                                <div className={`go-next shadow me-2 ${account_info?('active'):(null)}`} ></div>
                             </div>
                         </div>
                     ):(
@@ -214,9 +220,9 @@ class Signup extends React.Component{
                                 <div>
                                 <div class="mb-1">
                                 <label>Specialist</label>
-                                <select  class="form-control form-select shadow p-2 rounded" onChange={(e)=>{
+                                <select value={specialist_name} class="form-control form-select shadow p-2 rounded" onChange={(e)=>{
                                         const specId = e.target.selectedIndex
-                                        this.setState({specialist:e.target[specId].attributes['data-id'].value})
+                                        this.setState({specialist:e.target[specId].attributes['data-id'].value,specialist_name:e.target.value})
                                     }} required>
                                     <option selected disabled value="">Select the specialization</option>
                                     {this.state.specializations.map((date) => {

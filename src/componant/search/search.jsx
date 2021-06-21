@@ -4,11 +4,12 @@ import DoctorInfo from '../doctor-info/doctor-info'
 const Search=({all_doctors})=>{
   const [search,setsearch]=useState('')
   var filterdoctor=null
+  /*
   if(all_doctors){
     filterdoctor = all_doctors.filter(doctor =>
       doctor.name.toLowerCase().includes(search.toLowerCase())
       )
-  }
+  }*/
     return(
         <div className='position-relative'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search position-absolute" viewBox="0 0 16 16">
