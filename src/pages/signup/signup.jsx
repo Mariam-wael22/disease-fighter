@@ -3,7 +3,7 @@ import { Link ,withRouter} from 'react-router-dom'
 import Logo from '../../image/logo.png'
 import '../../componant/globalstyle.css'
 import './signup.css'
-import AvilableDate from '../../componant/avilable-date/avilable-data'
+import Date from '../../componant/date/date'
 
 class Signup extends React.Component{
     constructor(){
@@ -21,7 +21,10 @@ class Signup extends React.Component{
             gender:null,
             specialist:null,
             specializations:null,
-            about:''
+            about:'',
+            add_date:true,
+            showdate:false,
+            send_date:null
         }
     }
     componentDidMount(){
@@ -65,10 +68,11 @@ class Signup extends React.Component{
        }
        create_account =(event)=>{ 
         event.preventDefault();
-        const {is_doctor,name,email,password,about,location,phone,gender,specialist}=this.state
+        const {is_doctor,send_date,add_date,name,email,password,about,location,phone,gender,specialist}=this.state
         const data={'Check_email':true,'name':name,'email':email,'password':password, 'is_doctor':is_doctor,'location':location,'clinic_location':location,'phone':phone,'gender':gender, 'spec_id':specialist , 'about':about};
         console.log(data);
-        fetch("https://thediseasefighter.herokuapp.com/register", {
+        if(add_date){
+            fetch("https://thediseasefighter.herokuapp.com/register", {
           method: "POST",
           body: JSON.stringify(data),
           headers: {
@@ -78,11 +82,14 @@ class Signup extends React.Component{
           .then((res) => res.json())
           .then((data) => {
               console.log(data);
-              if(data.is_doctor===true){
-                window.localStorage.setItem('doctor',true)
-              }
               if(data.access_token){
                 window.localStorage.setItem('token',data.access_token)
+                if(data.is_doctor===true){
+                    window.localStorage.setItem('doctor',true)
+                    send_date.map((dates)=>(
+                        this.AddDates=(dates)
+                    ))
+                  }
                 this.props.history.push('/home')
               }
               else{
@@ -90,14 +97,41 @@ class Signup extends React.Component{
               }
               })
           .catch((err) => {console.log(err)});
+        }
+        else{
+            alert('please add avilable date')
+        }
        }
        handleChange = event => {
         const { value, name } = event.target;
     
         this.setState({ [name]: value });
-      };
+      }
+
+
+      AddDates=(dates)=>{
+        fetch("https://thediseasefighter.herokuapp.com/doctors/dates", {
+            method: "POST",
+            body: JSON.stringify(dates),
+            headers: {
+              Authorization: `Bearer ${window.localStorage.getItem(
+                  "token"
+              )}`,
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+                if(data.message==="You have created a new date"){
+
+                }
+                })
+            .catch((err) => {console.log(err)});
+       }
+
     render(){
-        const {is_doctor,account_info,name,email,password,confirm_password,error,about,location,phone,gender,specialist}=this.state
+        const {is_doctor,send_date,date,showdate,account_info,name,email,password,confirm_password,error,about,location,phone,gender,specialist}=this.state
         return(
             <div className='login'>
                 <div className='background-login'>
@@ -115,7 +149,7 @@ class Signup extends React.Component{
                         <div className='d-flex mt-3'>
                             <p className={`btn shadow p-2 w-50 rounded me-2 ${is_doctor?(null):('active')}`} onClick={()=>this.setState({is_doctor:false})}>
                             <i className='fa fa-user-md'></i>Patient</p>
-                            <p className={`btn shadow p-2 w-50 rounded me-2 ${is_doctor?('active'):(null)}`} onClick={()=>this.setState({is_doctor:true})}>
+                            <p className={`btn shadow p-2 w-50 rounded me-2 ${is_doctor?('active'):(null)}`} onClick={()=>this.setState({is_doctor:true,add_date:false})}>
                             <i className='fa fa-user-md'></i>Doctor</p>
                         </div>
                         <form onSubmit={this.check_email}>
@@ -148,12 +182,13 @@ class Signup extends React.Component{
                         </div>
                         <div className='d-flex justify-content-center go-next-container'>
                                 <div className={`go-next shadow me-2 ${account_info?(null):('active')}`} onClick={()=>this.setState({account_info:false})}></div>
-                                <div className={`go-next shadow me-2 ${account_info?('active'):(null)}`} ></div>
+                                <div className={`go-next shadow me-2 ${account_info?('active'):(null)}`} onClick={()=>this.setState({account_info:true})}></div>
                             </div>
                         </div>
                     ):(
-                        <div>
-                            <h2>You're Almost Done!</h2>
+                        <div>{!showdate?(
+                            <div>
+                                <h2>You're Almost Done!</h2>
                             <form onSubmit={this.create_account}>
                             <div class="mb-1">
                                 <label>About</label>
@@ -179,7 +214,7 @@ class Signup extends React.Component{
                                 <div>
                                 <div class="mb-1">
                                 <label>Specialist</label>
-                                <select value={specialist} class="form-control form-select shadow p-2 rounded" onChange={(e)=>{
+                                <select  class="form-control form-select shadow p-2 rounded" onChange={(e)=>{
                                         const specId = e.target.selectedIndex
                                         this.setState({specialist:e.target[specId].attributes['data-id'].value})
                                     }} required>
@@ -190,7 +225,7 @@ class Signup extends React.Component{
                                 </select>
                             </div>
                             <div>
-                            <p className='btn shadow p-2 w-100 rounded mt-2 mb-0 me-2 active'>Add Avilable Date</p>
+                            <p className='btn shadow p-2 w-100 rounded mt-2 mb-0 me-2 active'onClick={()=>this.setState({add_date:false,showdate:true})}>Add Avilable Date</p>
                             </div>
                                 </div>
                             ):(null)}
@@ -200,9 +235,11 @@ class Signup extends React.Component{
                             </div>
                             <div className='d-flex justify-content-center go-next-container'>
                                 <div className={`go-next shadow me-2 ${account_info?(null):('active')}`} onClick={()=>this.setState({account_info:false})}></div>
-                                <div className={`go-next shadow me-2 ${account_info?('active'):(null)}`} onClick={()=>this.setState({account_info:true})}></div>
+                                <div className={`go-next shadow me-2 ${account_info?('active'):(null)}`} ></div>
                             </div>
                             </form>
+                            </div>
+                        ):(<Date setState={state => this.setState(state)}/>)}
                             
                         </div>
                     )}

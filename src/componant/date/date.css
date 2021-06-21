@@ -1,0 +1,15 @@
+.dates{
+    width: 80%;
+    height: 30px;
+    margin-bottom: 5px;
+    background-color: #CCCCCC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dates p {
+    padding-top: 11px;
+}
+.icon{
+    cursor: pointer;
+}
