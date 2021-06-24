@@ -1,0 +1,49 @@
+.session_info{
+    background-color: white;
+    height: 525px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    overflow-y: auto;
+    padding: 20px 10px;
+}
+
+.session_info .first-img img{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.session_info .delete{
+    background-color: red;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    margin-right: 7px;
+}
+.session_info .active {
+    background-color: rgb(97, 197, 247);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+.files img{
+    width: 80px;
+    height: 100px;
+    margin-right: 10px;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -ms-border-radius: 0px;
+    -o-border-radius: 0px;
+}
+@media only screen and (max-width: 768px) {
+    .session_info{
+        background-color: white;
+        height: 490px;
+        flex: 100%;
+    }
+  }

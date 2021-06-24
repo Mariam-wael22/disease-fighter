@@ -4,6 +4,7 @@ import Navbar from '../../componant/navbar/navbar'
 import Menu from '../../componant/menu/menu'
 import DoctorInfo from '../../componant/doctor-info/doctor-info'
 import Appointment from '../../componant/appointment/appointment'
+import DcotorHome from '../../componant/doctor-home/doctor-home'
 import Spinner from '../../componant/spinner/spinner'
 import '../../componant/globalstyle.css'
 
@@ -15,7 +16,9 @@ class Home extends React.Component{
             top_doctors:null,
             all_doctors:null,
             active_alldoctor:false,
-            catigory:''
+            catigory:'',
+            data:null,
+            name:null
         }
         }
         componentDidMount() {
@@ -65,10 +68,45 @@ class Home extends React.Component{
                     this.setState({all_doctors:data.doctors})
                 })
                 .catch((err) => console.log(err));
+
+
+
+                fetch("https://thediseasefighter.herokuapp.com/sessions", {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${window.localStorage.getItem(
+                    "token"
+                )}`,
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+                this.setState({data:data})
+            })
+            .catch((err) => console.log(err));
+
+
+        fetch("https://thediseasefighter.herokuapp.com/user", {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${window.localStorage.getItem(
+                    "token"
+                )}`,
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                this.setState({name:data.current_user.name})
+
+            })
+            .catch((err) => console.log(err));
             
         }
         render(){
-            const {specializations, top_doctors,all_doctors,active_alldoctor,catigory}=this.state
+            const {specializations, top_doctors,all_doctors,active_alldoctor,catigory,data,name}=this.state
             var spec_data
             if(all_doctors){
              spec_data=this.state.all_doctors.filter((obj)=>{return obj.specialization.name === catigory})
@@ -79,7 +117,8 @@ class Home extends React.Component{
                     <div className='d-flex'>
                         <Menu />
                         <div className='main-container col-lg-10 col-md-10'>
-                            <div className='row justify-content-between'>
+                            {!window.localStorage.getItem("doctor")?(
+                                <div className='row justify-content-between'>
                                 <div className='left'>
                                     <div className='categorie'>
                                         <h3>Categories</h3>
@@ -132,6 +171,7 @@ class Home extends React.Component{
                                 
                                 </div>
                             </div>
+                            ):(<DcotorHome data={data} name={name} />)}
                         </div>
                     </div>
                 </div>

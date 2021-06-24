@@ -1,0 +1,36 @@
+.smallSession-info img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.smallSession-info{
+    margin-bottom: 5px;
+}
+.button:hover{
+    color: white;
+}
+@media only screen and (max-width: 768px) {
+    .smallSession-info{
+        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    }
+    .f-div{
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        flex: 77%;
+        align-items: center;
+    }
+    .f-div2{
+        flex: 23%;
+    }
+    .f-div p{
+        flex: 100%;
+    }
+    .button{
+        flex: 50%;
+    }
+}

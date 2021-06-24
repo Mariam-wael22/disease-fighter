@@ -1,6 +1,5 @@
 
 .notification-content{
-    overflow-y: auto;
     height: 213px;
     cursor: pointer;
     margin-bottom: 5px;
@@ -12,8 +11,11 @@
     margin-bottom: 5px;
     position: relative;
 }
-.unseen:hover{
-    background-color: #f4fbfe;
+.unseen{
+    background-color: #d0f1ff;
+}
+.seen{
+    background-color: #f4f4f4;
 }
 .notification-componant p{
     margin: 0px;

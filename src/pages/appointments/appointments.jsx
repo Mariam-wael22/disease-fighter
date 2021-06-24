@@ -3,9 +3,9 @@ import './appointments.css'
 import Navbar from '../../componant/navbar/navbar';
 import Menu from '../../componant/menu/menu'
 import Appointment from '../../componant/appointment/appointment';
+import EndSession from '../../componant/end-session/end-session'
 
 class Appointments extends React.Component{
-
 
     render(){
         return(
@@ -14,7 +14,11 @@ class Appointments extends React.Component{
                     <div className='d-flex'>
                         <Menu />
                         <div className='main-container col-lg-10 col-md-10'>
-                        <Appointment />
+                        {!window.localStorage.getItem("doctor")?(
+                        <Appointment />):(
+                            <EndSession />
+                        )}
+                        
                         </div>
                     </div>
                 

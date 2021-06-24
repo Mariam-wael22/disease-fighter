@@ -64,17 +64,15 @@ class Notification extends React.Component{
                                 .catch((err) => console.log(err));
         }
     render(){
-        const unseen_data=this.state.notifidata.filter((obj)=>{return obj.seen == false})
-        const seen_data=this.state.notifidata.filter((obj)=>{return obj.seen == true})
+        const {notifidata}=this.state
         console.log(this.state.notifidata)
         return(
             <div className='notification h-100'>
-                <h3>Notification</h3>
+                <h3 className='mb-3 mt-3'>Notification</h3>
                 <div className='new'>
-                    <h5>New</h5>
                     <div className='notification-content'>
-                        {unseen_data.map((notifi)=>
-                        <div className='notification-componant unseen d-flex align-items-center'>
+                        {notifidata.map((notifi)=>
+                        <div className={`notification-componant ${notifi.seen?('seen'):('unseen')} d-flex align-items-center`}>
                         <div>
                         <img src={notifi.doctor_avatar} alt="avatar"/>
                         </div>
@@ -83,26 +81,6 @@ class Notification extends React.Component{
                         <label>{notifi.time}</label>
                         </div>
                         <div className='icon' onClick={()=>this.deleteTask(notifi.session_id)}>
-                        <i class="fa fa-times"></i>
-                        </div>
-                        </div>
-                        )}
-                        
-                    </div>
-                </div>
-                <div className='new'>
-                    <h5>Earlier</h5>
-                    <div className='notification-content'>
-                    {seen_data.map((notifi)=>
-                        <div className='notification-componant d-flex align-items-center'>
-                        <div>
-                        <img src={notifi.doctor_avatar} alt="avatar"/>
-                        </div>
-                        <div className='content'>
-                        <p>Dr. {notifi.doctor_name} finished his session with you can rate it now</p>
-                        <label>{notifi.time}</label>
-                        </div>
-                        <div className='icon'>
                         <i class="fa fa-times"></i>
                         </div>
                         </div>

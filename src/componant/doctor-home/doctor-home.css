@@ -1,0 +1,94 @@
+.doctor-home .doctor-nav{
+    background-color: white;
+    min-height: 112px;
+    flex: 50%;
+    margin-right: 8px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    margin-bottom: 15px;
+}
+.doctor-home{
+    cursor: pointer;
+}
+.doctor-home .doctor-nav img{
+    width: 100%;
+    height: 100%;
+}
+.appointment-nav p{
+    cursor: pointer;
+}
+.meeting-session{
+    width: 100%;
+    height: 375px;
+    background-color: white;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    margin-right: 8px;
+    padding: 7px 10px;
+}
+.meeting-session p{
+    margin-bottom: 0px;
+    margin-left: 15px;
+}
+.meeting-session-containt{
+    width: 100%;
+    height: 323px;
+    padding: 10px 10px;
+    overflow-y: auto;
+}
+.button{
+    background-color: rgb(97, 197, 247);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+.meeting-session-containt p{
+    margin: 0px;
+}
+@media only screen and (max-width: 768px) {
+    .doctor-home{
+        flex-wrap: wrap;
+    }
+    .doctor-home .doctor-nav{
+        flex: 100%;
+        min-height: 88px;
+        margin: 0px;
+        margin-bottom: 7px;
+    }
+    .doctor-home .doctor-nav h5{
+        font-size: 14px;
+    }
+    .doctor-home .doctor-nav p{
+        font-size: 12px;
+        margin-bottom: 0px;
+    }
+    .meeting-session{
+        height: 300px;
+    }
+    .meeting-session h3{
+        font-size: 16px;
+    }
+    .meeting-session-header p{
+        font-size: 12px;
+        margin-bottom: 0px;
+        flex: 100%;
+        display: none;
+    }
+    .meeting-session .appointment-nav{
+        flex: 100%;
+    }
+    .meeting-session-header .form-control{
+        font-size: 11px;
+        width: 50%;
+        height: 35px;
+    }
+    .meeting-session-containt{
+        margin-top: 10px;
+        height: 247px;
+    }
+}
