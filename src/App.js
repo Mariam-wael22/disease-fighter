@@ -9,6 +9,7 @@ import Doctors from './pages/doctors/doctors'
 import Appointments from './pages/appointments/appointments'
 import Review from './pages/review/review'
 import Meeting from './pages/metting/meeting'
+import Model from './pages/model/model'
 import PrivateRoute from './componant/PrivateRoute'
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
       <PrivateRoute exact path='/doctors' component={Doctors} />
       <PrivateRoute exact path='/review' component={Review} />
       <PrivateRoute exact path='/meeting' component={Meeting} />
+      <PrivateRoute exact path='/model' component={Model} />
       <PrivateRoute exact path='/logout' component={logout} />
       </Switch>
     </div>

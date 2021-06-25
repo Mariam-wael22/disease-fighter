@@ -34,10 +34,11 @@
     padding: 0px 10px;
     padding-top: 20px;
     margin-bottom: 10px;
+    height: 205px;
 }
 .categorie-img img{
-    width: 74px;
-    height: 74px;
+    width: 89px;
+    height: 89px;
     cursor: pointer;
 }
 .categorie-img {
@@ -45,7 +46,71 @@
     height: 152px;
     overflow-x: auto;
 }
+.drag-area{
+    border: 2px dashed #79D5F5;
+    height: 100px;
+    width:80%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F4FBFE;
+    color: #A8ABB7;
+    font-size: 20px;
+    margin: auto;
+  }
+  .Circular-container{
+    width:90%;
+    height: 100px;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+  }
+.Circular-container .test{
+    margin-right: 5px;
+    width: 125px;
+    height: 108px;
+}
+.Circular-container .test p{
+    font-size: 13px;
+    margin-bottom: 0px;
+}
+.Circular-container .test .pred{
+    font-size: 18px;
+    color: #14274E;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
 @media only screen and (max-width: 768px) {
+    .Circular-container {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        margin: auto;
+    }
+    .Circular-container .test{
+        margin-right: 3px;
+        width: 100px;
+        height: 108px;
+    }
+    .Circular-container .test p{
+        font-size: 11px;
+    }
+    .Circular-container .test .pred {
+        font-size: 15px;
+    }
+    .categorie-img img {
+        width: 98px;
+        height: 93px;
+    }
     .main-container{
         flex: 100%;
         padding: 10px 20px;
@@ -67,11 +132,11 @@
     }
     .categorie-img {
         width: 100%;
-        height: 77px;
+        height: 140px;
         overflow-x: auto;
     }
     .home .left{
-        height: 138px;
+        height: 190px;
     }
 }
 

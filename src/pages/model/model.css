@@ -1,0 +1,32 @@
+.Model{
+    background-color: white;
+    height: 486px;
+}
+.Model .drag-area{
+    height: 200px;
+}
+.Model .test{
+    width: 150px;
+}
+@media only screen and (max-width: 768px) {
+    .Model{
+        flex: 100%;
+    }
+    .Circular-container {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        margin: auto;
+    }
+    .Circular-container .test{
+        margin-right: 3px;
+        width: 100px;
+        height: 108px;
+    }
+    .Circular-container .test p{
+        font-size: 11px;
+    }
+    .Circular-container .test .pred {
+        font-size: 15px;
+    }
+}

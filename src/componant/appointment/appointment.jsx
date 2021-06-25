@@ -20,9 +20,11 @@ class Appointment extends React.Component{
             fetch("https://thediseasefighter.herokuapp.com/sessions", {
                 method: "GET",
                 headers: {
-                    Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYyMzMxMTA1MiwianRpIjoiMDY2ZTRiNzQtNThhZS00NDYxLWE5OGMtYmJiNGRkMGMxN2MyIiwibmJmIjoxNjIzMzExMDUyLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoxMSwiZXhwIjoxNjI1OTAzMDUyLCJpc19kb2N0b3IiOmZhbHNlfQ.rUsYN6gobInTXuy-0xIYIKxD8COJFzwn9BMdSH2PdAU`,
-                    "Content-Type": "application/json",
-                },
+                    Authorization: `Bearer ${window.localStorage.getItem(
+                        "token"
+                    )}`,
+                      "Content-Type": "application/json",
+                  },
             })
                 .then((res) => res.json())
                 .then((data) => {

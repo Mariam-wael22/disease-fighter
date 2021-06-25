@@ -1,19 +1,22 @@
 import {React,useState} from 'react'
+import { useHistory } from 'react-router-dom'
 import './doctor-home.css'
 import Ai from '../../image/AI.png'
 import Doctors from '../../image/Doctors.png'
 import DoctorAppointment from '../doctor-appointment/doctor-appointment'
 
 const DcotorHome =({data,name})=> {
+    const history =useHistory()
     const [appointment,setAppointment]=useState({curr:'active-appointment',next:'',prev:''})
     return(
         <div>
             <div className='d-flex doctor-home'>
-                <div className='doctor-nav d-flex shadow rounded'>
+                <div className='doctor-nav d-flex shadow rounded' onClick={()=>history.push('/model')}>
                 <div className='col-9 d-flex flex-column justify-content-center ps-2'>
                     <h5 className=''>Hello! Dr {name}</h5>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                      At vero est nemo numquam explicabo</p>
+                     <p className='btn button w-50 d-none d-lg-block d-md-block'>Show model</p>
                 </div>
                 <div className='col-3'>
                     <img src={Ai} alt="" />

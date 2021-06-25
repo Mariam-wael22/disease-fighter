@@ -7,6 +7,8 @@ import Appointment from '../../componant/appointment/appointment'
 import DcotorHome from '../../componant/doctor-home/doctor-home'
 import Spinner from '../../componant/spinner/spinner'
 import '../../componant/globalstyle.css'
+import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 class Home extends React.Component{
     constructor(){
@@ -18,7 +20,8 @@ class Home extends React.Component{
             active_alldoctor:false,
             catigory:'',
             data:null,
-            name:null
+            name:null,
+            active_res:false
         }
         }
         componentDidMount() {
@@ -105,8 +108,11 @@ class Home extends React.Component{
             .catch((err) => console.log(err));
             
         }
+        uploadModel=(e)=>{
+            this.setState({active_res:true})
+        }
         render(){
-            const {specializations, top_doctors,all_doctors,active_alldoctor,catigory,data,name}=this.state
+            const {specializations, active_res , top_doctors,all_doctors,active_alldoctor,catigory,data,name}=this.state
             var spec_data
             if(all_doctors){
              spec_data=this.state.all_doctors.filter((obj)=>{return obj.specialization.name === catigory})
@@ -121,18 +127,62 @@ class Home extends React.Component{
                                 <div className='row justify-content-between'>
                                 <div className='left'>
                                     <div className='categorie'>
-                                        <h3>Categories</h3>
-                                        <div className='categorie-img'>
-                                            {
-                                                specializations?(
-                                                    specializations.map((specialization)=>(
-                                                        <img src={specialization.image} alt="" onClick={()=>this.setState({catigory:specialization.name})}/>
-                                                    ))
-                                                ):(
-                                                    <Spinner />
-                                                )
-                                            }
-                                        </div>
+                                        {catigory?(
+                                            <div>
+                                                <p className='btn active' onClick={()=>this.setState({catigory:''})}>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left me-1" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+                                                    <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                                                </svg>
+                                                Go Back</p>
+                                                <div className='model'>
+                                                    {!active_res?(
+                                                        <div className="drag-area" >
+                                                        <br />
+                                                        <label htmlFor='model' className='d-flex flex-column justify-content-center align-items-center'>
+                                                        <div className="icon" htmlFor='model'><i class="fa fa-upload"></i></div>
+                                                            Drop Your Files Here</label>
+                                                        <input type="file" id='model' hidden onChange={this.uploadModel}/>
+                                                    </div>
+                                                    ):(<div className='Circular-container'>
+                                                        <div className='test'>
+                                                            <CircularProgressbarWithChildren value={55}>
+                                                            <p className='pred'>{55}%</p>
+                                                                <p>First</p>
+                                                            </CircularProgressbarWithChildren>
+                                                        </div>
+                                                        <div className='test'>
+                                                            <CircularProgressbarWithChildren value={55}>
+                                                            <p className='pred'>{55}%</p>
+                                                                <p>First</p>
+                                                            </CircularProgressbarWithChildren>
+                                                        </div>
+                                                        <div className='test'>
+                                                            <CircularProgressbarWithChildren value={55}>
+                                                            <p className='pred'>{55}%</p>
+                                                                <p>viral pneumonia</p>
+                                                            </CircularProgressbarWithChildren>
+                                                        </div>
+                                                       </div>)}
+                                                </div>
+                                            </div>
+                                        ):(
+                                            <div>
+                                            <h3>Categories</h3>
+                                            <div className='categorie-img'>
+                                                {
+                                                    specializations?(
+                                                        specializations.map((specialization)=>(
+                                                            <img src={specialization.image} alt="" onClick={()=>this.setState({catigory:specialization.name})}/>
+                                                        ))
+                                                    ):(
+                                                        <Spinner />
+                                                    )
+                                                }
+                                            </div>
+                                            </div>
+                                        )}
+                                        
                                     </div>
                                     <div>
                                     <Appointment />
