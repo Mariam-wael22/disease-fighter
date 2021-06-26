@@ -13,6 +13,7 @@ class Doctors extends React.Component{
         super(props)
         this.state={
             all_doctors:null,
+            favorites:null,
             about_flag:props.location.state?(props.location.state.update?(false):(true)):(true)
         }
     }
@@ -28,7 +29,9 @@ class Doctors extends React.Component{
         })
             .then((res) => res.json())
             .then((data) => {
-                this.setState({all_doctors:data.doctors})
+                var fav={}
+                data.doctors.map((favorite)=>fav[favorite.id]=favorite.is_in_favorite_list)
+                this.setState({all_doctors:data.doctors,favorites:fav})
             })
             .catch((err) => console.log(err));
         }
@@ -36,13 +39,12 @@ class Doctors extends React.Component{
     render(){
         var id=1
         var data=null
-        const {all_doctors,about_flag}=this.state
-        if(this.props.location.state){
-            id=parseInt(this.props.location.state.id)
+        const {all_doctors,about_flag,favorites}=this.state
+        if(this.props.match.params){
+            id=parseInt(this.props.match.params.id)
         }
         if(all_doctors){
             data=all_doctors.filter((obj)=>{return obj.id === id})
-            console.log(data)
         } 
         return(
             <div className='doctors'>
@@ -68,7 +70,7 @@ class Doctors extends React.Component{
                             <div className='appointment'>
                                 {
                                     data?(
-                                        <Session data={data[0]} about_flag={about_flag} setState={state => this.setState(state)}/>
+                                        <Session data={data[0]} about_flag={about_flag} favorites={favorites}  setState={state => this.setState(state)}/>
                                     ):(<Spinner />)
                                 }
                             </div>

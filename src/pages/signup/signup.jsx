@@ -25,7 +25,9 @@ class Signup extends React.Component{
             about:'',
             add_date:true,
             showdate:false,
-            send_date:null
+            send_date:null,
+            avilabledates:[],
+            dateOfweek:['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday']
         }
     }
     componentDidMount(){
@@ -137,7 +139,7 @@ class Signup extends React.Component{
         this.setState({ [name]: value });
       }
     render(){
-        const {is_doctor,specialist_name,showdate,account_info,name,email,password,confirm_password,error,about,location,phone,gender,specialist}=this.state
+        const {is_doctor,specialist_name,avilabledates,dateOfweek,showdate,account_info,name,email,password,confirm_password,error,about,location,phone,gender}=this.state
         return(
             <div className='login'>
                 <div className='background-login'>
@@ -245,7 +247,7 @@ class Signup extends React.Component{
                             </div>
                             </form>
                             </div>
-                        ):(<Date setState={state => this.setState(state)}/>)}
+                        ):(<Date setState={state => this.setState(state)} dateOfweek={dateOfweek} avilabledates={avilabledates}/>)}
                             
                         </div>
                     )}

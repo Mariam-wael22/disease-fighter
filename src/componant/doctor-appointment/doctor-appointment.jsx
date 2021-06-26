@@ -1,9 +1,8 @@
 import React from 'react'
 import './doctor-appointment.css'
-import {useLocation,useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 
 const DoctorAppointment=({...session_info})=>{
-    const location =useLocation()
     const history=useHistory()
     return(
         <div className='d-flex align-items-center smallSession-info'>

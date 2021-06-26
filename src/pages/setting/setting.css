@@ -37,6 +37,7 @@
     -moz-border-radius: 7px;
     -ms-border-radius: 7px;
     -o-border-radius: 7px;
+    overflow-y: auto;
 }
 .more-setting div{
     height: 60px;

@@ -3,14 +3,14 @@ import './date.css'
 import '../globalstyle.css'
 
 class Date extends React.Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state={
-            data:[],
+            data:this.props.avilabledates,
             day:null,
             start:null,
             end:null,
-            date:['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday']
+            date:this.props.dateOfweek
         }
     }
     savedate=(event)=>{
@@ -23,7 +23,7 @@ class Date extends React.Component{
         }
         var joined = data.concat(dates);
         this.setState({ data: joined })
-        const last =date.filter((arr)=>arr !=day)
+        const last =date.filter((arr)=>arr !==day)
         this.setState({date:last,day:last[0]})
     }
     handleChange = event => {
@@ -33,7 +33,7 @@ class Date extends React.Component{
       deleteDate =(day)=>{
         const {data,date}=this.state
         var joined = date.concat(day);
-        const last = data.filter((arr)=>arr.day !=day)
+        const last = data.filter((arr)=>arr.day !==day)
         this.setState({ data: last ,date:joined})
       }
       chanagehour=(e)=>{
@@ -62,7 +62,7 @@ class Date extends React.Component{
     }
 
     render(){
-        const {data,date,start,end}=this.state
+        const {data,date}=this.state
         return(
             <div>
                 <form onSubmit={this.savedate}>
@@ -83,8 +83,8 @@ class Date extends React.Component{
                         <label>End Time</label>
                         <input type="time" name='end' className='form-control shadow p-2 rounded' onChange={this.chanagehour}  required/>
                     </div>
-                    <div>
-                        <button type='submit' className='btn shadow p-2 w-100 rounded mt-2 mb-0 me-2 active'>Add Avilable Date</button>
+                    <div className='d-flex justify-content-center align-items-center'>
+                        <button type='submit' className='btn shadow p-2 w-50 rounded mt-2 mb-1 me-2 active-btn'>Add Avilable Date</button>
                     </div>
                     <div className='d-flex flex-column justify-content-center align-items-center mt-2 mb-3'>
                           {data?(
@@ -105,8 +105,13 @@ class Date extends React.Component{
                       </div>
                       <div>
                           {data.length?(
-                              <div>
-                                    <p className='btn shadow p-2 w-100 rounded mt-2 mb-0 me-2 active' onClick={()=>this.props.setState({send_date:data,add_date:true,showdate:false})}>Done</p>
+                              <div className='d-flex justify-content-center align-items-center'>
+                                  {this.props.isSetting?(
+                                      <p className='btn shadow p-2 w-50 rounded mb-0 me-2 active-btn' onClick={()=>this.props.setState({avilabledates:data,dateOfweek:date})}>Done</p>
+                                  ):(
+                                      <p className='btn shadow p-2 w-50 rounded mb-0 me-2 active-btn' onClick={()=>this.props.setState({send_date:data,add_date:true,showdate:false})}>Done</p>
+                                  )}
+                                    
                               </div>
                           ):(null)}
                       </div>

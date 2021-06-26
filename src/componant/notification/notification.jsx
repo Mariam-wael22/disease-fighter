@@ -65,7 +65,6 @@ class Notification extends React.Component{
         }
     render(){
         const {notifidata}=this.state
-        console.log(this.state.notifidata)
         return(
             <div className='notification h-100'>
                 <h3 className='mb-3 mt-3'>Notification</h3>

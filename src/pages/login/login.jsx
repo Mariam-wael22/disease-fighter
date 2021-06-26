@@ -84,13 +84,13 @@ class Login extends React.Component{
                     </div>
                     <div className='d-flex justify-content-center'>
                         <div className='alt-login shadow'>
-                            <img src={g}/>
+                            <img src={g} alt='google'/>
                         </div>
                         <div className='alt-login shadow'>
-                            <img src={f}/>
+                            <img src={f} alt='facebook'/>
                         </div>
                         <div className='alt-login shadow'>
-                            <img src={t}/>
+                            <img src={t} alt='twitter'/>
                         </div>
                     </div>
                     <div className='d-flex justify-content-center'>

@@ -13,3 +13,11 @@
 .icon{
     cursor: pointer;
 }
+.active-btn{
+    background-color: rgb(97, 197, 247);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+.active-btn:hover{
+    color: rgb(255, 255, 255);
+}

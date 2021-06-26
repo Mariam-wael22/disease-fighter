@@ -116,6 +116,11 @@ class BookingInfo extends React.Component{
     }
     availableDates={}
     render(){
+        const {location}=this.props
+        var update=null
+        if(location.state){
+            update=location.state.update
+        }
         return(
             <div className='booking-info'>
                 {!this.state.booking_success?(
@@ -175,7 +180,7 @@ class BookingInfo extends React.Component{
                                 <input type="number"  name='phone' class="form-control shadow p-2 rounded" onChange={(e)=>{this.setState({phone:e.target.value})}} required/>
                             </div>
                         </div>
-                        {!this.props.location.state.update?(
+                        {!update?(
                             <div class="mb-1">
                                 <label>Medicines</label>
                                 <textarea type='text' class="form-control shadow p-2 rounded" onChange={(e)=>{this.setState({medicines:e.target.value})}} />
@@ -186,7 +191,7 @@ class BookingInfo extends React.Component{
                         <textarea class="form-control shadow p-2 rounded" onChange={(e)=>{this.setState({comment:e.target.value})}} />
                         </div>
                             <div className='mt-3 d-flex justify-content-center align-items-center'>
-                            {this.props.location.state.update?(
+                            {update?(
                                 <button className='btn delete danger shadow p-2 w-50 rounded' onClick={this.delete_appoint}>Delete</button>
                         ):(null)}
                             <button type='submit' className='btn active shadow p-2 w-50 rounded'>Book Appointment</button>
@@ -196,7 +201,7 @@ class BookingInfo extends React.Component{
                     ):(null)          
                 ):(
                     <div>
-                        <img src={bookingimg} alt='booking image'/>
+                        <img src={bookingimg} alt='booking '/>
                             <div className='booking-header'>
                             <h3>{this.state.error}</h3>
                         </div>

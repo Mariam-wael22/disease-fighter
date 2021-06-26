@@ -21,7 +21,8 @@ class Home extends React.Component{
             catigory:'',
             data:null,
             name:null,
-            active_res:false
+            active_res:false,
+            error:''
         }
         }
         componentDidMount() {
@@ -43,7 +44,9 @@ class Home extends React.Component{
             fetch("https://thediseasefighter.herokuapp.com/doctors/top", {
                 method: "GET",
                 headers: {
-                    Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYyMzMxMTA1MiwianRpIjoiMDY2ZTRiNzQtNThhZS00NDYxLWE5OGMtYmJiNGRkMGMxN2MyIiwibmJmIjoxNjIzMzExMDUyLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoxMSwiZXhwIjoxNjI1OTAzMDUyLCJpc19kb2N0b3IiOmZhbHNlfQ.rUsYN6gobInTXuy-0xIYIKxD8COJFzwn9BMdSH2PdAU`,
+                    Authorization: `Bearer ${window.localStorage.getItem(
+                        "token"
+                    )}`,
                     "Content-Type": "application/json",
                 },
             })
@@ -74,7 +77,7 @@ class Home extends React.Component{
 
 
 
-                fetch("https://thediseasefighter.herokuapp.com/sessions", {
+            fetch("https://thediseasefighter.herokuapp.com/sessions", {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${window.localStorage.getItem(
@@ -109,10 +112,44 @@ class Home extends React.Component{
             
         }
         uploadModel=(e)=>{
-            this.setState({active_res:true})
+            var modelname=this.state.catigory.toLowerCase()
+            if(modelname==='chest'){
+                modelname='covid19'
+            }
+            this.setState({active_res:true,prediction_result:[],error:''})
+            const file=e.target.files[0]
+            const formData = new FormData();
+            formData.append("file",file);
+            console.log(formData);
+            fetch(
+                `https://thediseasefighter.herokuapp.com/model/${modelname}`,
+                {
+                    method: "POST",
+                    body: formData,
+                    mode: "cors",
+                    headers: {
+                        Authorization: `Barer ${window.localStorage.getItem(
+                            "token"
+                        )}`,
+                    },
+                }
+            )
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data)
+                    if(data.prediction_result){
+                        this.setState({prediction_result:data.prediction_result})
+                    }
+                    else{
+                        this.setState({error:data.message})
+                    }
+                })
+                .catch((err) => {
+                    this.setState({error:"The server's Model is not working"})
+                });
         }
         render(){
-            const {specializations, active_res , top_doctors,all_doctors,active_alldoctor,catigory,data,name}=this.state
+            const {specializations,error,prediction_result, active_res , top_doctors,all_doctors,active_alldoctor,catigory,data,name}=this.state
             var spec_data
             if(all_doctors){
              spec_data=this.state.all_doctors.filter((obj)=>{return obj.specialization.name === catigory})
@@ -129,7 +166,7 @@ class Home extends React.Component{
                                     <div className='categorie'>
                                         {catigory?(
                                             <div>
-                                                <p className='btn active' onClick={()=>this.setState({catigory:''})}>
+                                                <p className='btn active' onClick={()=>this.setState({catigory:'',active_res:false,error:''})}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left me-1" viewBox="0 0 16 16">
                                                     <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
                                                     <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
@@ -145,24 +182,22 @@ class Home extends React.Component{
                                                         <input type="file" id='model' hidden onChange={this.uploadModel}/>
                                                     </div>
                                                     ):(<div className='Circular-container'>
-                                                        <div className='test'>
-                                                            <CircularProgressbarWithChildren value={55}>
-                                                            <p className='pred'>{55}%</p>
-                                                                <p>First</p>
+                                                        {prediction_result.length?(prediction_result.map((pred)=>(
+                                                            <div className='test'>
+                                                            <CircularProgressbarWithChildren value={pred.percentage}>
+                                                            <p className='pred'>{pred.percentage}%</p>
+                                                                <p>{pred.type}</p>
                                                             </CircularProgressbarWithChildren>
                                                         </div>
-                                                        <div className='test'>
-                                                            <CircularProgressbarWithChildren value={55}>
-                                                            <p className='pred'>{55}%</p>
-                                                                <p>First</p>
-                                                            </CircularProgressbarWithChildren>
-                                                        </div>
-                                                        <div className='test'>
-                                                            <CircularProgressbarWithChildren value={55}>
-                                                            <p className='pred'>{55}%</p>
-                                                                <p>viral pneumonia</p>
-                                                            </CircularProgressbarWithChildren>
-                                                        </div>
+                                                        ))):(<div>
+                                                            {error?(<p>{error} Please go back and try again</p>):(
+                                                                <div>
+                                                                    <p>Please Wait</p>
+                                                                    <Spinner />
+                                                                </div>
+                                                            )}
+                                                        </div>)}
+                                                        
                                                        </div>)}
                                                 </div>
                                             </div>

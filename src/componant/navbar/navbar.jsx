@@ -34,7 +34,6 @@ class Navbar extends React.Component{
                 })
                     .then((res) => res.json())
                     .then((data) => {
-                      console.log(data)
                         this.setState({userdata:data.current_user})
                         
                     })
@@ -71,7 +70,6 @@ class Navbar extends React.Component{
   })
       .then((res) => res.json())
       .then((data) => {
-          console.log(data)
           let num=0
           data.notifications.map((notifi)=>{
               if(!notifi.seen){
@@ -82,7 +80,6 @@ class Navbar extends React.Component{
               num=null
           }
           this.setState({notifidata:data.notifications,num:num})
-          console.log(data)
           
       })
       .catch((err) => console.log(err));

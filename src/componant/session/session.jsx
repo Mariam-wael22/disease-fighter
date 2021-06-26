@@ -7,10 +7,47 @@ import BookingInfo from '../booking-info/booking-info'
 
 
 class Session extends React.Component{
+    constructor(props){
+        super(props)
+        this.state={
+            is_favorite:this.props.favorites
+        }
+    }
+    changecolor=()=>{
+        const {is_favorite}=this.state
+        let id =this.props.data.id
+        let fav=is_favorite[id]
+        this.setState(prevState => {
+            let is_favorite = Object.assign({}, prevState.is_favorite);  // creating copy of state variable jasper
+            is_favorite[id] = !fav;                     // update the name property, assign a new value                 
+            return { is_favorite };                                 // return new object jasper object
+          })
+          console.log(id)
+          fetch(`https://thediseasefighter.herokuapp.com/doctors/${id}/favorite`, {
+            method: `${fav?('DELETE'):('POST')}`,
+            body: JSON.stringify({
+                "is_in_favorite_list":true
+                }),
+            headers: {
+              Authorization: `Bearer ${window.localStorage.getItem(
+                  "token"
+              )}`,
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                
+                })
+            .catch((err) => {console.log(err)});
+    }
     render(){
         const {data,about_flag,setState}=this.props
+        const {is_favorite} =this.state
         var list=[]
-        var index=data.reviews.rates
+        if(data){
+            var index=data.reviews.rates
             for (let i=1; i<=5;i++) {
                 if(i<=index){
                     list.push(<i className="fa fa-star rating"></i>)
@@ -19,14 +56,14 @@ class Session extends React.Component{
                     list.push(<i className="fa fa-star"></i>)
                 }
             }
-
+        }
         return(
-            <div>
-                {console.log(data)}
+           <div>
+                {data?(
+                <div>
                   {about_flag?(
                       <div>
-                          
-                          <div className='doctor-avatar d-flex justify-content-center align-items-center'>
+                      <div className='doctor-avatar d-flex justify-content-center align-items-center'>
                       <img src={data.avatar} alt='doctor avatar'/>
                   </div>
                   <div className='doctor-main-data d-flex flex-column justify-content-center align-items-center'>
@@ -56,7 +93,12 @@ class Session extends React.Component{
                       </div>
                       <div className='d-flex justify-content-center align-items-center active-session'>
                           <div>
-                              <p className='btn active shadow p-2 w-100 rounded' onClick={()=>setState({about_flag:false})}>Book Appointment</p>
+                          <svg style={{color: `${is_favorite?(is_favorite[data.id]?('red'):('')):('')}`}} xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-heart-fill me-2 love" viewBox="0 0 16 16" onClick={this.changecolor}>
+                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                          </svg>
+                          </div>
+                          <div>
+                              <p className='btn active shadow p-2 w-100 rounded mb-0' onClick={()=>setState({about_flag:false})}>Book Appointment</p>
                           </div>
                       </div>
                   </div>
@@ -66,6 +108,8 @@ class Session extends React.Component{
 
                   )}  
             </div>
+            ):(null)}
+           </div>
         )
     }
 }

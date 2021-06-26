@@ -16,7 +16,7 @@ const DoctorInfo=({avatar,name,id,specialization,clinic_location,about,reviews,.
         }
       }
     return(
-        <div className='doctor-info d-flex align-items-center ' onClick={()=>history.replace({pathname:`/doctors`,state: { id: id}})}>
+        <div className='doctor-info d-flex align-items-center ' onClick={()=>history.replace({pathname:`/doctors/${id}`})}>
             <div className='avatar col-lg-2 col-md-3 col-sm-2'>
                 <img src={avatar} alt="Doctor Avatar" />
             </div>

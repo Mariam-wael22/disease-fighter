@@ -1,5 +1,5 @@
-import {React,useState} from 'react'
-import {useLocation,useHistory} from 'react-router-dom'
+import {React} from 'react'
+import {useLocation} from 'react-router-dom'
 import './meeting.css'
 import '../../componant/globalstyle.css'
 import Navbar from '../../componant/navbar/navbar'
@@ -7,14 +7,12 @@ import Menu from '../../componant/menu/menu'
 
 const Meeting =()=>{
     const location =useLocation()
-    const history=useHistory()
     var app=null
     if(location.state){
         app=location.state.app
     }
     return(
         <div>
-            {console.log(app)}
             <Navbar />
             <div className='d-flex'>
                 <Menu />

@@ -48,10 +48,10 @@ class Appointment extends React.Component{
                     {activef?(
                         <div>
                             {currdata?(
-                                currdata.map((app)=> <div onClick={()=>this.props.history.replace({pathname:`/doctors`,state: { id: app.doctor_id,session_id:app.id,prev_id:app.period_id,update:true }})}><AppointmentInfo key={app.id}{...app}/></div>)
+                                currdata.map((app)=> <div onClick={()=>this.props.history.replace({pathname:`/doctors/${app.doctor_id}`,state: { id: app.doctor_id,session_id:app.id,prev_id:app.period_id,update:true }})}><AppointmentInfo key={app.id}{...app}/></div>)
                             ):(null)}
                             {nextdata?(
-                                nextdata.map((app)=> <div onClick={()=>this.props.history.replace({pathname:`/doctors`,state: { id: app.doctor_id,session_id:app.id,prev_id:app.period_id,update:true }})}><AppointmentInfo key={app.id}{...app}/></div>)
+                                nextdata.map((app)=> <div onClick={()=>this.props.history.replace({pathname:`/doctors/${app.doctor_id}`,state: { id: app.doctor_id,session_id:app.id,prev_id:app.period_id,update:true }})}><AppointmentInfo key={app.id}{...app}/></div>)
                             ):(null)}
                         </div>
                     ):(
