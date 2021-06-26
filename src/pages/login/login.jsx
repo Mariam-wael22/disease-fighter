@@ -79,7 +79,7 @@ class Login extends React.Component{
                     <p class="text-danger">{error}</p>
                     </div>
                     </form>
-                    <div className='d-flex justify-content-center w-100'>
+                    <div className='d-flex justify-content-center w-100 mb-2'>
                         <label>or login with</label>
                     </div>
                     <div className='d-flex justify-content-center'>

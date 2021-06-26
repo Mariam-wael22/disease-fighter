@@ -27,6 +27,7 @@ const DcotorHome =({data,name})=> {
                     <h5 className=' mb-1'>Hello! Dr {name}</h5>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                      At vero est nemo numquam explicabo</p>
+                     <p className='btn button w-50 d-none d-lg-block d-md-block'>Show Meeting</p>
                 </div>
                 <div className='col-3'>
                     <img src={Doctors} alt="" />

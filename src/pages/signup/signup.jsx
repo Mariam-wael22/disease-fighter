@@ -162,19 +162,19 @@ class Signup extends React.Component{
                         </div>
                         <form onSubmit={this.check_email}>
                         <div class="mb-2">
-                            <label>Name</label>
+                            <label className='mb-1'>Name</label>
                             <input type="text" name='name' value={name} class="form-control shadow p-2 rounded" onChange={this.handleChange} required/>
                          </div>
                         <div class="mb-2">
-                            <label>Email address</label>
+                            <label className='mb-1'>Email address</label>
                             <input type="email" name='email' value={email} class="form-control shadow p-2 rounded" onChange={this.handleChange} required/>
                         </div>
                         <div class="mb-2">
-                            <label>Password</label>
+                            <label className='mb-1'>Password</label>
                             <input type="password" name='password' value={password} class="form-control shadow p-2 rounded" onChange={this.handleChange} required/>
                         </div>
                         <div class="mb-3">
-                            <label>Confirm Password</label>
+                            <label className='mb-1'>Confirm Password</label>
                             <input type="password" name='confirm_password' value={confirm_password} class="form-control shadow p-2 rounded" onChange={this.handleChange} required/>
                         </div>
                         <div>

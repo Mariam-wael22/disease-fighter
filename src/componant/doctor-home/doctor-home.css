@@ -13,12 +13,14 @@
 .doctor-home{
     cursor: pointer;
 }
+
 .doctor-home .doctor-nav img{
     width: 100%;
     height: 100%;
 }
 .appointment-nav p{
     cursor: pointer;
+    color: #8A9EAD;
 }
 .meeting-session{
     width: 100%;
@@ -46,6 +48,9 @@
     background-color: rgb(97, 197, 247);
     color: rgb(255, 255, 255);
     cursor: pointer;
+}
+.button:hover{
+    color: rgb(255, 255, 255);
 }
 .meeting-session-containt p{
     margin: 0px;

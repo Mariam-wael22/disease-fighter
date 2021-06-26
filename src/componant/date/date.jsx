@@ -84,7 +84,7 @@ class Date extends React.Component{
                         <input type="time" name='end' className='form-control shadow p-2 rounded' onChange={this.chanagehour}  required/>
                     </div>
                     <div className='d-flex justify-content-center align-items-center'>
-                        <button type='submit' className='btn shadow p-2 w-50 rounded mt-2 mb-1 me-2 active-btn'>Add Avilable Date</button>
+                        <button type='submit' className={`btn shadow p-2  rounded mt-2 mb-1 me-2 active-btn ${this.props.isSetting?('w-50'):('w-100')}`}>Add Avilable Date</button>
                     </div>
                     <div className='d-flex flex-column justify-content-center align-items-center mt-2 mb-3'>
                           {data?(
