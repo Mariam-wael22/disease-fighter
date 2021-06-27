@@ -12,16 +12,17 @@ class BookingInfo extends React.Component{
         super(props)
         this.state={
             dates:dates,
-            day:'',
-            time:'',
-            name:'',
-            gender:'',
-            phone:'',
+            day:this.props.location.state?(this.props.location.state.app):(''),
+            time:null,
+            name:this.props.location.state?(this.props.location.state.app.name):(''),
+            gender:this.props.location.state?(this.props.location.state.app.gender):(''),
+            phone:this.props.location.state?(this.props.location.state.app.phone):(''),
             medicines:'',
-            comment:'',
+            comment:this.props.location.state?(this.props.location.state.app.comment):(''),
             day_id:null,
             period_id:null,
-            booking_success:false
+            booking_success:false,
+            readonly:this.props.location.state?(true):(false)
         }
     }
     componentDidMount(){
@@ -117,6 +118,7 @@ class BookingInfo extends React.Component{
     availableDates={}
     render(){
         const {location}=this.props
+        const {readonly,day,time,name,gender,phone,medicines,comment}=this.state
         var update=null
         if(location.state){
             update=location.state.update
@@ -133,7 +135,7 @@ class BookingInfo extends React.Component{
                         <form onSubmit={this.Booking}>
                         <div class="mb-1">
                             <label>Date</label>
-                            <select name='date' class="form-control form-select shadow p-2 rounded" onChange={(e)=>{
+                            <select name='date' value={day} disabled = {readonly} class="form-control form-select shadow p-2 rounded" onChange={(e)=>{
                                 const dayId = e.target.selectedIndex
                                 this.setState({day_id:e.target[dayId].attributes['data-id'].value})
                                 this.setState({day:e.target.value})
@@ -147,12 +149,12 @@ class BookingInfo extends React.Component{
                         </div>
                         <div class="mb-1">
                             <label>Time</label>
-                            <select name='time' class="form-control form-select shadow p-2 rounded" onChange={(e)=>{
+                            <select name='time' disabled = {readonly} class="form-control form-select shadow p-2 rounded" onChange={(e)=>{
                                     const period_id = e.target.selectedIndex
                                     this.setState({period_id:e.target[period_id].attributes['data-id'].value})
                                     this.setState({time:e.target.value})
                                 }} required>
-                                <option value='none' selected disabled hidden>Select the time</option>:
+                                <option value='none' selected disabled value="">Select the time</option>:
                                 {this.availableDates?(this.state.day_id?(
                                     Object.values(this.availableDates[this.state.day_id]).map((date)=>(
                                         !date.is_available?(
@@ -164,12 +166,12 @@ class BookingInfo extends React.Component{
                         </div>
                         <div class="mb-1">
                             <label>Name</label>
-                            <input type="text" name='name' class="form-control shadow p-2 rounded" onChange={(e)=>{this.setState({name:e.target.value})}} required/>
+                            <input type="text" value={name} readOnly = {readonly} name='name' class="form-control shadow p-2 rounded" onChange={(e)=>{this.setState({name:e.target.value})}} required/>
                          </div>
                         <div className='phone-gender d-flex'>
                             <div class="gender mb-1 me-2">
                                 <label>Gender</label>
-                                <select name='gender'  class="form-control form-select shadow p-2 rounded" onChange={(e)=>{this.setState({gender:e.target.value})}} required>
+                                <select name='gender' value={gender} disabled = {readonly} class="form-control form-select shadow p-2 rounded" onChange={(e)=>{this.setState({gender:e.target.value})}} required>
                                     <option selected disabled value="">Select Gender</option>
                                     <option >Male</option>
                                     <option >Female</option>
@@ -177,7 +179,7 @@ class BookingInfo extends React.Component{
                             </div>
                             <div class="mb-1">
                                 <label>Phone Number</label>
-                                <input type="number"  name='phone' class="form-control shadow p-2 rounded" onChange={(e)=>{this.setState({phone:e.target.value})}} required/>
+                                <input type="number" value={phone} readOnly = {readonly} name='phone' class="form-control shadow p-2 rounded" onChange={(e)=>{this.setState({phone:e.target.value})}} required/>
                             </div>
                         </div>
                         {!update?(
@@ -188,13 +190,25 @@ class BookingInfo extends React.Component{
                         ):(null)}
                         <div class="mb-1">
                         <label>Comment</label>
-                        <textarea class="form-control shadow p-2 rounded" onChange={(e)=>{this.setState({comment:e.target.value})}} />
+                        <textarea class="form-control shadow p-2 rounded" value={comment} readOnly = {true} onChange={(e)=>{this.setState({comment:e.target.value})}} />
                         </div>
-                            <div className='mt-3 d-flex justify-content-center align-items-center'>
+                            <div>
                             {update?(
-                                <button className='btn delete danger shadow p-2 w-50 rounded' onClick={this.delete_appoint}>Delete</button>
-                        ):(null)}
-                            <button type='submit' className='btn active shadow p-2 w-50 rounded'>{update?('Edit'):('Book Appointment')}</button>
+                                <div className='mt-3 d-flex justify-content-center align-items-center'>
+                                    <button className='btn delete danger shadow p-2 w-50 rounded' onClick={this.delete_appoint}>Delete</button>
+                                    {readonly?(
+                                        <p className='btn active shadow p-2 mt-3 w-50 rounded' onClick={()=>this.setState({readonly:false})}>Edit</p>
+                                    ):(
+                                        <button type='submit' className='btn active shadow p-2 w-50 rounded'>Save Change</button>
+                                    )}
+                                </div>
+                                ):(
+                                    <div className='mt-3 d-flex justify-content-center align-items-center'>
+                                        <button type='submit' className='btn active shadow p-2 w-50 rounded'>Book Appointment</button>
+                                    </div>
+                                    
+                                )}
+                           
                             </div>
                             </form>
                             </div>
