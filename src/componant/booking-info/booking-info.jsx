@@ -65,11 +65,11 @@ class BookingInfo extends React.Component{
                 previous_period_id=this.props.location.state.period_id
                 
             }
-            else{
-                root=`https://thediseasefighter.herokuapp.com/doctors/${this.props.id}/sessions`
-                method="POST"
-                data["medicines"]=medicines
-            }
+        }
+        else{
+            root=`https://thediseasefighter.herokuapp.com/doctors/${this.props.id}/sessions`
+            method="POST"
+            data["medicines"]=medicines
         }
         console.log(data)
         fetch(`${root}`, {
@@ -194,7 +194,7 @@ class BookingInfo extends React.Component{
                             {update?(
                                 <button className='btn delete danger shadow p-2 w-50 rounded' onClick={this.delete_appoint}>Delete</button>
                         ):(null)}
-                            <button type='submit' className='btn active shadow p-2 w-50 rounded'>Book Appointment</button>
+                            <button type='submit' className='btn active shadow p-2 w-50 rounded'>{update?('Edit'):('Book Appointment')}</button>
                             </div>
                             </form>
                             </div>

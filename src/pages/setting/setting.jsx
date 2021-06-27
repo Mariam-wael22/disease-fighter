@@ -188,9 +188,11 @@ class Setting extends React.Component{
                                     <div className='d-flex justify-content-center align-items-center'>
                                         <p className='btn active-btn mb-0' onClick={this.changepass}>Save Change</p>
                                     </div>
-                                    <div>
-                                    <Date setState={state => this.setState(state)} dateOfweek={dateOfweek} avilabledates={avilabledates} isSetting={true}/>
-                                    </div>
+                                    {!window.localStorage.getItem("doctor")?(null):(
+                                        <div>
+                                        <Date setState={state => this.setState(state)} dateOfweek={dateOfweek} avilabledates={avilabledates} isSetting={true}/>
+                                        </div>
+                                    )}
                                     </div>
                                 </div>
                             )}

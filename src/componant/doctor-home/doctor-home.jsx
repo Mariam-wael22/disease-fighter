@@ -87,7 +87,7 @@ const DcotorHome =({data,name})=> {
                     {appointment.prev?(
                         data.previous_appointments?(
                             data.previous_appointments.map((session_info)=>(
-                                <DoctorAppointment {...session_info}/>
+                                <DoctorAppointment {...session_info} prev={true}/>
                             ))
                         ):(null)
                     ):(null)}

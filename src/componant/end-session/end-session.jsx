@@ -13,9 +13,11 @@ const EndSession=()=>{
     const [Doc,SetDoc]=useState(null)
     const [Image,SetImage]=useState(null)
     var session_info=null
+    var prev=null
 
     if(location.state){
         session_info=location.state.session_info
+        prev=location.state.prev
     }
     const EndMeeting=()=>{
         const diag={'diagnosis':Diagnosis,'medicines':Medicines}
@@ -58,6 +60,23 @@ const EndSession=()=>{
               console.error(error)
             })
     }
+    const DeleteMeeting=()=>{
+        fetch(`https://thediseasefighter.herokuapp.com/sessions/${session_info.id}`, {
+            method: "DELETE",
+            headers: {
+              Authorization: `Bearer ${window.localStorage.getItem(
+                  "token"
+              )}`,
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+                history.push('/home')
+                })
+            .catch((err) => {console.log(err)});
+    }
     return(
         <div className='d-flex justify-content-center'>
             {session_info?(
@@ -98,8 +117,10 @@ const EndSession=()=>{
                            </div>
                         </div>
                         <div className='mt-3 d-flex justify-content-center align-items-center'>
-                            <button className='btn delete danger shadow p-2 w-50 rounded'>Delete</button>
-                            <button className='btn active shadow p-2 w-50 rounded' onClick={()=>setStart(true)}>Satrt Meeting</button>
+                            <button className='btn delete danger shadow p-2 w-50 rounded' onClick={DeleteMeeting}>Delete</button>
+                            {prev?(null):(
+                                <button className='btn active shadow p-2 w-50 rounded' onClick={()=>setStart(true)}>Satrt Meeting</button>
+                            )}
                         </div>
                         </div>):(<div>
                             <div class="mb-1">
