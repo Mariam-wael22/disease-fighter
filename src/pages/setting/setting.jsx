@@ -26,7 +26,7 @@ class Setting extends React.Component{
     componentDidMount(){
         
         //get user data
-        fetch("https://thediseasefighter.herokuapp.com/user", {
+        fetch("http://diseasefighter.pythonanywhere.com/user", {
                       method: "GET",
                       headers: {
                           Authorization: `Bearer ${window.localStorage.getItem(
@@ -37,6 +37,10 @@ class Setting extends React.Component{
                   })
                       .then((res) => res.json())
                       .then((data) => {
+                          console.log(data)
+                          var obj=data.current_user
+                        this.setState({name:obj.name,location:obj.location,phone:obj.phone,about:obj.about,avatar:obj.avatar,avatarimg:obj.avatar,gender:obj.gender})
+
                         let dateOfweek=['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday']
                         data.current_user.available_dates.map((day)=>{
                             if(dateOfweek.includes(day)){
@@ -46,8 +50,6 @@ class Setting extends React.Component{
                                 this.setState({avilabledates:this.state.avilabledates.concat(day)})
                             }
                         })
-                        var obj=data.current_user
-                        this.setState({name:obj.name,location:obj.location,phone:obj.phone,about:obj.about,avatar:obj.avatar,avatarimg:obj.avatar,email:obj.email,gender:obj.gender})
                           
                       })
                       .catch((err) => console.log(err));
@@ -58,7 +60,7 @@ class Setting extends React.Component{
             data.append('file', this.state.avatar)
             data.append('key', '123')
             console.log(data)
-            fetch('https://thediseasefighter.herokuapp.com/avatar', {
+            fetch('http://diseasefighter.pythonanywhere.com/avatar', {
                 method: 'PATCH',
                 body: data,
                 headers: {
@@ -78,7 +80,7 @@ class Setting extends React.Component{
         Submit =()=>{ 
             const {name,location, phone, gender,about}=this.state;
             const data={'name':name,'location':location,'clinic_location':location,'phone':phone,'gender':gender, 'about':about};
-            fetch("https://thediseasefighter.herokuapp.com/user", {
+            fetch("http://diseasefighter.pythonanywhere.com/user", {
               method: "PATCH",
               body: JSON.stringify(data),
               headers: {
@@ -104,7 +106,7 @@ class Setting extends React.Component{
              current_password:this.state.old_password,
              new_password:this.state.new_password
          }
-         fetch("https://thediseasefighter.herokuapp.com/password", {
+         fetch("http://diseasefighter.pythonanywhere.com/password", {
              method: "PATCH",
              body: JSON.stringify(data),
              headers: {

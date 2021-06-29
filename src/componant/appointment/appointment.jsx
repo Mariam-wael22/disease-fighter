@@ -17,7 +17,7 @@ class Appointment extends React.Component{
         }
         }
         componentDidMount() {
-            fetch("https://thediseasefighter.herokuapp.com/sessions", {
+            fetch("http://diseasefighter.pythonanywhere.com/sessions", {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${window.localStorage.getItem(

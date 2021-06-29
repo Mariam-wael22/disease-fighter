@@ -26,7 +26,7 @@ class Home extends React.Component{
         }
         }
         componentDidMount() {
-            fetch("https://thediseasefighter.herokuapp.com/specializations", {
+            fetch("http://diseasefighter.pythonanywhere.com/specializations", {
                         method: "GET",
                         headers: {
                             "Content-Type": "application/json",
@@ -41,7 +41,7 @@ class Home extends React.Component{
                         .catch((err) => console.log(err));
 
 
-            fetch("https://thediseasefighter.herokuapp.com/doctors/top", {
+            fetch("http://diseasefighter.pythonanywhere.com/doctors/top", {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${window.localStorage.getItem(
@@ -60,7 +60,7 @@ class Home extends React.Component{
                 })
                 .catch((err) => console.log(err));
 
-            fetch("https://thediseasefighter.herokuapp.com/doctors", {
+            fetch("http://diseasefighter.pythonanywhere.com/doctors", {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${window.localStorage.getItem(
@@ -77,7 +77,7 @@ class Home extends React.Component{
 
 
 
-            fetch("https://thediseasefighter.herokuapp.com/sessions", {
+            fetch("http://diseasefighter.pythonanywhere.com/sessions", {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${window.localStorage.getItem(
@@ -94,7 +94,7 @@ class Home extends React.Component{
             .catch((err) => console.log(err));
 
 
-        fetch("https://thediseasefighter.herokuapp.com/user", {
+        fetch("http://diseasefighter.pythonanywhere.com/user", {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${window.localStorage.getItem(
@@ -122,7 +122,7 @@ class Home extends React.Component{
             formData.append("file",file);
             console.log(formData);
             fetch(
-                `https://thediseasefighter.herokuapp.com/model/${modelname}`,
+                `http://diseasefighter.pythonanywhere.com/model/${modelname}`,
                 {
                     method: "POST",
                     body: formData,

@@ -18,7 +18,7 @@ class Doctors extends React.Component{
         }
     }
     componentDidMount() {                    
-        fetch("https://thediseasefighter.herokuapp.com/doctors", {
+        fetch("http://diseasefighter.pythonanywhere.com/doctors", {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${window.localStorage.getItem(

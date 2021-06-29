@@ -23,7 +23,7 @@ class Navbar extends React.Component{
     }
     componentDidMount(){
       //get user data
-      fetch("https://thediseasefighter.herokuapp.com/user", {
+      fetch("http://diseasefighter.pythonanywhere.com/user", {
                     method: "GET",
                     headers: {
                         Authorization: `Bearer ${window.localStorage.getItem(
@@ -41,7 +41,7 @@ class Navbar extends React.Component{
 
 
       //get all doctor to using it search
-      fetch("https://thediseasefighter.herokuapp.com/doctors", {
+      fetch("http://diseasefighter.pythonanywhere.com/doctors", {
             method: "GET",
             headers: {
               Authorization: `Bearer ${window.localStorage.getItem(
@@ -59,7 +59,7 @@ class Navbar extends React.Component{
 
 
       //get notification data
-      fetch("https://thediseasefighter.herokuapp.com/notifications", {
+      fetch("http://diseasefighter.pythonanywhere.com/notifications", {
       method: "GET",
       headers: {
           Authorization: `Bearer ${window.localStorage.getItem(
