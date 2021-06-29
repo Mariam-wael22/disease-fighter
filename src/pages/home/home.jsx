@@ -26,7 +26,7 @@ class Home extends React.Component{
         }
         }
         componentDidMount() {
-            fetch("http://diseasefighter.pythonanywhere.com/specializations", {
+            fetch("https://diseasefighter.pythonanywhere.com/specializations", {
                         method: "GET",
                         headers: {
                             "Content-Type": "application/json",
@@ -41,7 +41,7 @@ class Home extends React.Component{
                         .catch((err) => console.log(err));
 
 
-            fetch("http://diseasefighter.pythonanywhere.com/doctors/top", {
+            fetch("https://diseasefighter.pythonanywhere.com/doctors/top", {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${window.localStorage.getItem(
@@ -60,7 +60,7 @@ class Home extends React.Component{
                 })
                 .catch((err) => console.log(err));
 
-            fetch("http://diseasefighter.pythonanywhere.com/doctors", {
+            fetch("https://diseasefighter.pythonanywhere.com/doctors", {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${window.localStorage.getItem(
@@ -77,7 +77,7 @@ class Home extends React.Component{
 
 
 
-            fetch("http://diseasefighter.pythonanywhere.com/sessions", {
+            fetch("https://diseasefighter.pythonanywhere.com/sessions", {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${window.localStorage.getItem(
@@ -94,7 +94,7 @@ class Home extends React.Component{
             .catch((err) => console.log(err));
 
 
-        fetch("http://diseasefighter.pythonanywhere.com/user", {
+        fetch("https://diseasefighter.pythonanywhere.com/user", {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${window.localStorage.getItem(
@@ -122,7 +122,7 @@ class Home extends React.Component{
             formData.append("file",file);
             console.log(formData);
             fetch(
-                `http://diseasefighter.pythonanywhere.com/model/${modelname}`,
+                `https://diseasefighter.pythonanywhere.com/model/${modelname}`,
                 {
                     method: "POST",
                     body: formData,

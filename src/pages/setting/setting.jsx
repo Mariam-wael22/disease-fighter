@@ -26,7 +26,7 @@ class Setting extends React.Component{
     componentDidMount(){
         
         //get user data
-        fetch("http://diseasefighter.pythonanywhere.com/user", {
+        fetch("https://diseasefighter.pythonanywhere.com/user", {
                       method: "GET",
                       headers: {
                           Authorization: `Bearer ${window.localStorage.getItem(
@@ -60,7 +60,7 @@ class Setting extends React.Component{
             data.append('file', this.state.avatar)
             data.append('key', '123')
             console.log(data)
-            fetch('http://diseasefighter.pythonanywhere.com/avatar', {
+            fetch('https://diseasefighter.pythonanywhere.com/avatar', {
                 method: 'PATCH',
                 body: data,
                 headers: {
@@ -80,7 +80,7 @@ class Setting extends React.Component{
         Submit =()=>{ 
             const {name,location, phone, gender,about}=this.state;
             const data={'name':name,'location':location,'clinic_location':location,'phone':phone,'gender':gender, 'about':about};
-            fetch("http://diseasefighter.pythonanywhere.com/user", {
+            fetch("https://diseasefighter.pythonanywhere.com/user", {
               method: "PATCH",
               body: JSON.stringify(data),
               headers: {
@@ -106,7 +106,7 @@ class Setting extends React.Component{
              current_password:this.state.old_password,
              new_password:this.state.new_password
          }
-         fetch("http://diseasefighter.pythonanywhere.com/password", {
+         fetch("https://diseasefighter.pythonanywhere.com/password", {
              method: "PATCH",
              body: JSON.stringify(data),
              headers: {

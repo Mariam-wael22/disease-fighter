@@ -21,7 +21,7 @@ class Login extends React.Component{
         const {email, password}=this.state;
         const data={'email':email,'password':password};
         console.log(data);
-        fetch("http://diseasefighter.pythonanywhere.com/login", {
+        fetch("https://diseasefighter.pythonanywhere.com/login", {
           method: "POST",
           body: JSON.stringify(data),
           headers: {

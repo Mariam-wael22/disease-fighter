@@ -31,7 +31,7 @@ class Signup extends React.Component{
         }
     }
     componentDidMount(){
-        fetch("http://diseasefighter.pythonanywhere.com/specializations", {
+        fetch("https://diseasefighter.pythonanywhere.com/specializations", {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -49,7 +49,7 @@ class Signup extends React.Component{
     AddDates=(dates)=>{
         console.log(dates)
         console.log('hello alaa hendam')
-      fetch("http://diseasefighter.pythonanywhere.com/doctors/dates", {
+      fetch("https://diseasefighter.pythonanywhere.com/doctors/dates", {
           method: "POST",
           body: JSON.stringify(dates),
           headers: {
@@ -75,7 +75,7 @@ class Signup extends React.Component{
         const {email}=this.state;
         const data={'email':email};
         console.log(data);
-        fetch("http://diseasefighter.pythonanywhere.com/email", {
+        fetch("https://diseasefighter.pythonanywhere.com/email", {
           method: "POST",
           body: JSON.stringify(data),
           headers: {
@@ -101,7 +101,7 @@ class Signup extends React.Component{
         console.log(data);
         const AddDates=this.AddDates
         if(add_date){
-            fetch("http://diseasefighter.pythonanywhere.com/register", {
+            fetch("https://diseasefighter.pythonanywhere.com/register", {
           method: "POST",
           body: JSON.stringify(data),
           headers: {

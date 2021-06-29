@@ -19,7 +19,7 @@ class Model extends React.Component{
         }
     }
     componentDidMount(){
-        fetch("http://diseasefighter.pythonanywhere.com/user", {
+        fetch("https://diseasefighter.pythonanywhere.com/user", {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${window.localStorage.getItem(
@@ -48,7 +48,7 @@ class Model extends React.Component{
             formData.append("file",file);
             console.log(formData);
             fetch(
-                `http://diseasefighter.pythonanywhere.com/model/${modelname}`,
+                `https://diseasefighter.pythonanywhere.com/model/${modelname}`,
                 {
                     method: "POST",
                     body: formData,

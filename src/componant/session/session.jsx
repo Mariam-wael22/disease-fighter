@@ -23,7 +23,7 @@ class Session extends React.Component{
             return { is_favorite };                                 // return new object jasper object
           })
           console.log(id)
-          fetch(`http://diseasefighter.pythonanywhere.com/doctors/${id}/favorite`, {
+          fetch(`https://diseasefighter.pythonanywhere.com/doctors/${id}/favorite`, {
             method: `${fav?('DELETE'):('POST')}`,
             body: JSON.stringify({
                 "is_in_favorite_list":true

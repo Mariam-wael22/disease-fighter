@@ -21,7 +21,7 @@ const EndSession=()=>{
     }
     const EndMeeting=()=>{
         const diag={'diagnosis':Diagnosis,'medicines':Medicines}
-        fetch(`http://diseasefighter.pythonanywhere.com/sessions/${session_info.id}`, {
+        fetch(`https://diseasefighter.pythonanywhere.com/sessions/${session_info.id}`, {
             method: "PATCH",
             body: JSON.stringify(diag),
             headers: {
@@ -42,7 +42,7 @@ const EndSession=()=>{
             data.append('file', Image)
             data.append('key', '123')
             console.log(data)
-            fetch(`http://diseasefighter.pythonanywhere.com/sessions/${session_info.id}/files`, {
+            fetch(`https://diseasefighter.pythonanywhere.com/sessions/${session_info.id}/files`, {
               method: 'PATCH',
               body: data,
               headers: {
@@ -61,7 +61,7 @@ const EndSession=()=>{
             })
     }
     const DeleteMeeting=()=>{
-        fetch(`http://diseasefighter.pythonanywhere.com/sessions/${session_info.id}`, {
+        fetch(`https://diseasefighter.pythonanywhere.com/sessions/${session_info.id}`, {
             method: "DELETE",
             headers: {
               Authorization: `Bearer ${window.localStorage.getItem(

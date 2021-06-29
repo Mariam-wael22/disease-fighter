@@ -32,7 +32,7 @@ const Review =()=>{
       const addReview=()=>{
           console.log(comment)
           console.log(stars)
-        fetch(`http://diseasefighter.pythonanywhere.com/sessions/${notifi.session_id}/reviews`, {
+        fetch(`https://diseasefighter.pythonanywhere.com/sessions/${notifi.session_id}/reviews`, {
           method: "POST",
           body: JSON.stringify({ 
             "comment":comment, 

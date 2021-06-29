@@ -12,7 +12,7 @@ class Notification extends React.Component{
     deleteTask(id) {
         const remain_data=this.state.notifidata.filter((obj)=>{return obj.session_id !== id})
         this.setState({notifidata:remain_data});  
-        fetch(`http://diseasefighter.pythonanywhere.com/notifications/${id}`, {
+        fetch(`https://diseasefighter.pythonanywhere.com/notifications/${id}`, {
                                 method: "PATCH",
                                 body: JSON.stringify({
                                     "type": "delete"
@@ -43,7 +43,7 @@ class Notification extends React.Component{
                                 .catch((err) => console.log(err));
         }
         seen_notifi(notifi){
-            fetch(`http://diseasefighter.pythonanywhere.com/notifications/${notifi.session_id}`, {
+            fetch(`https://diseasefighter.pythonanywhere.com/notifications/${notifi.session_id}`, {
                                 method: "PATCH",
                                 body: JSON.stringify({
                                     "type": "update"

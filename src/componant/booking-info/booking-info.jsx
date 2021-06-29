@@ -26,7 +26,7 @@ class BookingInfo extends React.Component{
         }
     }
     componentDidMount(){
-        fetch(`http://diseasefighter.pythonanywhere.com/doctors/${this.props.id}/dates`, {
+        fetch(`https://diseasefighter.pythonanywhere.com/doctors/${this.props.id}/dates`, {
           headers: {
             Authorization: `Bearer ${window.localStorage.getItem(
                 "token"
@@ -61,14 +61,14 @@ class BookingInfo extends React.Component{
         }
         if (this.props.location.state) {
             if(this.props.location.state.update){
-                root=`http://diseasefighter.pythonanywhere.com/sessions/${this.props.location.state.session_id}`
+                root=`https://diseasefighter.pythonanywhere.com/sessions/${this.props.location.state.session_id}`
                 method="PATCH"
                 previous_period_id=this.props.location.state.period_id
                 
             }
         }
         else{
-            root=`http://diseasefighter.pythonanywhere.com/doctors/${this.props.id}/sessions`
+            root=`https://diseasefighter.pythonanywhere.com/doctors/${this.props.id}/sessions`
             method="POST"
             data["medicines"]=medicines
         }
@@ -99,7 +99,7 @@ class BookingInfo extends React.Component{
                     .catch((err) => console.log(err));
     }
      delete_appoint=()=>{
-        fetch(`http://diseasefighter.pythonanywhere.com/sessions/${this.props.location.state.session_id}`, {
+        fetch(`https://diseasefighter.pythonanywhere.com/sessions/${this.props.location.state.session_id}`, {
          method: "DELETE",
          headers: {
            Authorization: `Bearer ${window.localStorage.getItem(
