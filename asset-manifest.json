@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/disease-fighter/static/css/main.203441bf.chunk.css",
-    "main.js": "/disease-fighter/static/js/main.7f706940.chunk.js",
-    "main.js.map": "/disease-fighter/static/js/main.7f706940.chunk.js.map",
+    "main.js": "/disease-fighter/static/js/main.b75429c3.chunk.js",
+    "main.js.map": "/disease-fighter/static/js/main.b75429c3.chunk.js.map",
     "runtime-main.js": "/disease-fighter/static/js/runtime-main.2458c0d9.js",
     "runtime-main.js.map": "/disease-fighter/static/js/runtime-main.2458c0d9.js.map",
     "static/css/2.1a4ef057.chunk.css": "/disease-fighter/static/css/2.1a4ef057.chunk.css",
@@ -29,6 +29,6 @@
     "static/css/2.1a4ef057.chunk.css",
     "static/js/2.7ee433b2.chunk.js",
     "static/css/main.203441bf.chunk.css",
-    "static/js/main.7f706940.chunk.js"
+    "static/js/main.b75429c3.chunk.js"
   ]
 }
