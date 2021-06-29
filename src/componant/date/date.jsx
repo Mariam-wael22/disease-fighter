@@ -109,7 +109,7 @@ class Date extends React.Component{
                                   {this.props.isSetting?(
                                       <p className='btn shadow p-2 w-50 rounded mb-0 me-2 active-btn' onClick={()=>this.props.setState({avilabledates:data,dateOfweek:date})}>Done</p>
                                   ):(
-                                      <p className='btn shadow p-2 w-50 rounded mb-0 me-2 active-btn' onClick={()=>this.props.setState({send_date:data,add_date:true,showdate:false})}>Done</p>
+                                      <p className='btn shadow p-2 w-50 rounded mb-0 me-2 active-btn' onClick={()=>this.props.setState({send_date:data,avilabledates:data,dateOfweek:date,add_date:true,showdate:false})}>Done</p>
                                   )}
                                     
                               </div>
