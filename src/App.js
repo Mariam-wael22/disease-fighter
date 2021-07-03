@@ -11,6 +11,7 @@ import Review from './pages/review/review'
 import Meeting from './pages/metting/meeting'
 import Model from './pages/model/model'
 import PrivateRoute from './componant/PrivateRoute'
+import Favourite from './pages/favourite/favourite'
 
 function App() {
   const history =useHistory();
@@ -34,6 +35,7 @@ function App() {
                alert('Logout First')
              ):(<Signup />)
            )} />
+      <PrivateRoute exact path='/favourite' component={Favourite} />
       <PrivateRoute exact path='/home' component={Home} />
       <PrivateRoute exact path='/setting' component={Setting} />
       <PrivateRoute exact path='/appointments' component={Appointments} />
