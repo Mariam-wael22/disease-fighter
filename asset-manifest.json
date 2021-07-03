@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/disease-fighter/static/css/main.943b6499.chunk.css",
-    "main.js": "/disease-fighter/static/js/main.1a681bd9.chunk.js",
-    "main.js.map": "/disease-fighter/static/js/main.1a681bd9.chunk.js.map",
-    "runtime-main.js": "/disease-fighter/static/js/runtime-main.e2c7ed2e.js",
-    "runtime-main.js.map": "/disease-fighter/static/js/runtime-main.e2c7ed2e.js.map",
+    "main.css": "/disease-fighter/static/css/main.94754635.chunk.css",
+    "main.js": "/disease-fighter/static/js/main.4625e8c3.chunk.js",
+    "main.js.map": "/disease-fighter/static/js/main.4625e8c3.chunk.js.map",
+    "runtime-main.js": "/disease-fighter/static/js/runtime-main.83656470.js",
+    "runtime-main.js.map": "/disease-fighter/static/js/runtime-main.83656470.js.map",
     "static/css/2.1a4ef057.chunk.css": "/disease-fighter/static/css/2.1a4ef057.chunk.css",
-    "static/js/2.2d0e5a93.chunk.js": "/disease-fighter/static/js/2.2d0e5a93.chunk.js",
-    "static/js/2.2d0e5a93.chunk.js.map": "/disease-fighter/static/js/2.2d0e5a93.chunk.js.map",
-    "static/js/3.43c70c27.chunk.js": "/disease-fighter/static/js/3.43c70c27.chunk.js",
-    "static/js/3.43c70c27.chunk.js.map": "/disease-fighter/static/js/3.43c70c27.chunk.js.map",
+    "static/js/2.022e9b74.chunk.js": "/disease-fighter/static/js/2.022e9b74.chunk.js",
+    "static/js/2.022e9b74.chunk.js.map": "/disease-fighter/static/js/2.022e9b74.chunk.js.map",
+    "static/js/3.677e008d.chunk.js": "/disease-fighter/static/js/3.677e008d.chunk.js",
+    "static/js/3.677e008d.chunk.js.map": "/disease-fighter/static/js/3.677e008d.chunk.js.map",
     "index.html": "/disease-fighter/index.html",
     "static/css/2.1a4ef057.chunk.css.map": "/disease-fighter/static/css/2.1a4ef057.chunk.css.map",
-    "static/css/main.943b6499.chunk.css.map": "/disease-fighter/static/css/main.943b6499.chunk.css.map",
-    "static/js/2.2d0e5a93.chunk.js.LICENSE.txt": "/disease-fighter/static/js/2.2d0e5a93.chunk.js.LICENSE.txt",
+    "static/css/main.94754635.chunk.css.map": "/disease-fighter/static/css/main.94754635.chunk.css.map",
+    "static/js/2.022e9b74.chunk.js.LICENSE.txt": "/disease-fighter/static/js/2.022e9b74.chunk.js.LICENSE.txt",
     "static/media/AI.f51b4ab9.png": "/disease-fighter/static/media/AI.f51b4ab9.png",
     "static/media/Doctor.54e94bee.png": "/disease-fighter/static/media/Doctor.54e94bee.png",
     "static/media/Doctors.a2d727aa.png": "/disease-fighter/static/media/Doctors.a2d727aa.png",
@@ -25,10 +25,10 @@
     "static/media/logo.e5ea7897.png": "/disease-fighter/static/media/logo.e5ea7897.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.e2c7ed2e.js",
+    "static/js/runtime-main.83656470.js",
     "static/css/2.1a4ef057.chunk.css",
-    "static/js/2.2d0e5a93.chunk.js",
-    "static/css/main.943b6499.chunk.css",
-    "static/js/main.1a681bd9.chunk.js"
+    "static/js/2.022e9b74.chunk.js",
+    "static/css/main.94754635.chunk.css",
+    "static/js/main.4625e8c3.chunk.js"
   ]
 }
