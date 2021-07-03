@@ -47,8 +47,6 @@ class Signup extends React.Component{
     }
 
     AddDates=(dates)=>{
-        console.log(dates)
-        console.log('hello alaa hendam')
       fetch("https://diseasefighter.pythonanywhere.com/doctors/dates", {
           method: "POST",
           body: JSON.stringify(dates),

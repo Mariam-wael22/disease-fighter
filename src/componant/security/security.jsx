@@ -26,14 +26,15 @@ class Security extends React.Component{
                       .then((data) => {
                         console.log(data)
                         let dateOfweek=['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday']
-                        data.current_user.available_dates.map((day)=>{
-                            if(dateOfweek.includes(day)){
-                                this.setState({avilabledates:this.state.avilabledates.concat(day),dateOfweek:this.state.dateOfweek.concat(day)})
-                                }
-                            else{
-                                this.setState({avilabledates:this.state.avilabledates.concat(day)})
-                                }
-                        })
+                        let avilabledates=[]
+                        if(data.current_user.available_dates.length){
+                            data.current_user.available_dates.map((day)=>{
+                                dateOfweek=dateOfweek.filter((arr)=>arr !==day.day)
+                                avilabledates=avilabledates.concat(day)
+                            })
+                        }
+                        this.setState({avilabledates:avilabledates,dateOfweek:dateOfweek})
+                        
                       })
                       .catch((err) => console.log(err));
                     }
@@ -68,7 +69,7 @@ class Security extends React.Component{
                 </div>
                 {!window.localStorage.getItem("doctor")?(null):(
                     <div>
-                        <Date setState={state => this.setState(state)} dateOfweek={dateOfweek} avilabledates={avilabledates} isSetting={true}/>
+                        {dateOfweek.length||avilabledates.length?(<Date setState={state => this.setState(state)} setState_Setting={this.props.setState} dateOfweek={dateOfweek} avilabledates={avilabledates} isSetting={true}/>):(null)}
                     </div>
                 )}
                 </div>

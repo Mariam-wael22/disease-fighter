@@ -170,7 +170,7 @@ class Setting extends React.Component{
                                     </div>
                                 </div>
                             ):(
-                                <Security />
+                                <Security setState={state => this.setState(state)}/>
                             )}
                             
                         </div>
