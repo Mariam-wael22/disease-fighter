@@ -94,7 +94,9 @@ h2 {
     font-size: 18px;
     cursor: pointer;
 }
-
+.form-select {
+    cursor: pointer;
+}
 
 
 .alt-login{

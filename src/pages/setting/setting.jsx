@@ -2,7 +2,7 @@ import React from 'react'
 import './setting.css'
 import Navbar from '../../componant/navbar/navbar'
 import Menu from '../../componant/menu/menu'
-import Date from '../../componant/date/date'
+import Security from '../../componant/security/security'
 import '../../componant/globalstyle.css'
 
 class Setting extends React.Component{
@@ -11,16 +11,12 @@ class Setting extends React.Component{
         this.state={
             activef:true,
             name:null,
-            old_password:'',
-            new_password:'',
             location:'',
             phone:'',
             gender:null,
             about:'',
             avatar:null,
             avatarimg:null,
-            avilabledates:[],
-            dateOfweek:[]
         }
     }
     componentDidMount(){
@@ -40,7 +36,6 @@ class Setting extends React.Component{
                           console.log(data)
                           var obj=data.current_user
                         this.setState({name:obj.name,location:obj.location,phone:obj.phone,about:obj.about,avatar:obj.avatar,avatarimg:obj.avatar,gender:obj.gender})
-
                         let dateOfweek=['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday']
                         data.current_user.available_dates.map((day)=>{
                             if(dateOfweek.includes(day)){
@@ -50,7 +45,6 @@ class Setting extends React.Component{
                                 this.setState({avilabledates:this.state.avilabledates.concat(day)})
                             }
                         })
-                          
                       })
                       .catch((err) => console.log(err));
                     }
@@ -146,8 +140,7 @@ class Setting extends React.Component{
                                 <input id="updateimg" className='file d-none' type="file" accept="image/*" multiple = "false" onChange={(e)=>(this.setState({avatar:e.target.files[0],avatarimg:URL.createObjectURL(e.target.files[0])}))}/>
                                 <button className='btn active-btn' onClick={this.Submitavatar}>Upload Image</button>
                             </div>
-
-                                    <div class="mb-2">
+                         <div class="mb-2">
                             <label>Name</label>
                             <input type="text" name='name' value={name} class="form-control shadow p-2 rounded" onChange={this.handleChange} required/>
                          </div>
@@ -177,26 +170,7 @@ class Setting extends React.Component{
                                     </div>
                                 </div>
                             ):(
-                                <div className='security-setting col-lg-5 col-md-5'>
-                                    <div className='p-3'>
-                                    <div class="mb-1">
-                                        <label>Current Password</label>
-                                        <input type="password" name='old_password' value={old_password} class="form-control shadow p-2 rounded" onChange={this.handleChange} />
-                                    </div>
-                                    <div class="mb-1">
-                                        <label>New Password</label>
-                                        <input type="password" name='new_password' value={new_password} class="form-control shadow p-2 rounded" onChange={this.handleChange} />
-                                    </div>
-                                    <div className='d-flex justify-content-center align-items-center'>
-                                        <p className='btn active-btn mb-0' onClick={this.changepass}>Save Change</p>
-                                    </div>
-                                    {!window.localStorage.getItem("doctor")?(null):(
-                                        <div>
-                                        <Date setState={state => this.setState(state)} dateOfweek={dateOfweek} avilabledates={avilabledates} isSetting={true}/>
-                                        </div>
-                                    )}
-                                    </div>
-                                </div>
+                                <Security />
                             )}
                             
                         </div>

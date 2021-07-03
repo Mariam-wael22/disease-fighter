@@ -13,6 +13,7 @@
 }
 .small-menu .active{
     background-color: #FBFBFB;
+    color: #2baae9;
 }
 .small-menu i{
     margin-right: 10px;

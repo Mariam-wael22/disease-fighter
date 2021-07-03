@@ -36,7 +36,7 @@ class BookingInfo extends React.Component{
       })
           .then((res) => res.json())
           .then((data) => {
-              console.log(data);
+              console.log(data.dates);
               this.setState({dates:data})
               })
           .catch((err) => {console.log(err)});
@@ -118,15 +118,19 @@ class BookingInfo extends React.Component{
     availableDates={}
     render(){
         const {location}=this.props
-        const {readonly,day,time,name,gender,phone,medicines,comment}=this.state
+        if(location.state){
+            console.log(location.state.app)
+        }
+        const {readonly,dates,day,name,booking_success,gender,phone,comment}=this.state
         var update=null
         if(location.state){
             update=location.state.update
         }
+        console.log(dates)
         return(
             <div className='booking-info'>
-                {!this.state.booking_success?(
-                    this.state.dates.dates?(
+                {!booking_success?(
+                    dates.dates?(
                         <div>
                         <div className='booking-header d-flex flex-column justify-content-center align-items-center'>
                             <h3>Booking Information</h3>
@@ -141,7 +145,7 @@ class BookingInfo extends React.Component{
                                 this.setState({day:e.target.value})
                             }} required>
                             <option selected disabled value="">Select the day</option>
-                            {this.state.dates.dates.map((date) => {
+                            {dates.dates.map((date) => {
                                 this.availableDates[date.id] = { ...date.available_dates }
                                 return(<option data-id={date.id} name={date.day}>{date.day}</option> )
                             })}
@@ -154,7 +158,7 @@ class BookingInfo extends React.Component{
                                     this.setState({period_id:e.target[period_id].attributes['data-id'].value})
                                     this.setState({time:e.target.value})
                                 }} required>
-                                <option value='none' selected disabled value="">Select the time</option>:
+                                <option value='none' selected disabled>Select the time</option>:
                                 {this.availableDates?(this.state.day_id?(
                                     Object.values(this.availableDates[this.state.day_id]).map((date)=>(
                                         !date.is_available?(
@@ -190,14 +194,14 @@ class BookingInfo extends React.Component{
                         ):(null)}
                         <div class="mb-1">
                         <label>Comment</label>
-                        <textarea class="form-control shadow p-2 rounded" value={comment} readOnly = {true} onChange={(e)=>{this.setState({comment:e.target.value})}} />
+                        <textarea class="form-control shadow p-2 rounded" value={comment} readOnly = {readonly} onChange={(e)=>{this.setState({comment:e.target.value})}} />
                         </div>
                             <div>
                             {update?(
                                 <div className='mt-3 d-flex justify-content-center align-items-center'>
                                     <button className='btn delete danger shadow p-2 w-50 rounded' onClick={this.delete_appoint}>Delete</button>
                                     {readonly?(
-                                        <p className='btn active shadow p-2 mt-3 w-50 rounded' onClick={()=>this.setState({readonly:false})}>Edit</p>
+                                        <p className='btn active shadow p-2 mt-3 w-50 rounded' onClick={()=>this.setState({readonly:false,day:''})}>Edit</p>
                                     ):(
                                         <button type='submit' className='btn active shadow p-2 w-50 rounded'>Save Change</button>
                                     )}
