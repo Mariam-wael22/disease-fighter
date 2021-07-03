@@ -35,6 +35,12 @@
     margin-bottom: 2px;
     margin-left: 10px;
 }
+.favourite .error{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
 .favourite-componant .active{
     background-color: rgb(97, 197, 247);
     color: rgb(255, 255, 255);

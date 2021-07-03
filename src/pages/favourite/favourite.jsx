@@ -4,13 +4,15 @@ import './favourite.css'
 import Navbar from '../../componant/navbar/navbar'
 import Menu from '../../componant/menu/menu'
 import '../../componant/globalstyle.css'
+import Spinner from '../../componant/spinner/spinner'
 
 
 class Favourite extends React.Component{
     constructor(){
         super()
         this.state={
-            favorites:null
+            favorites:null,
+            error:''
         }
     }
     componentDidMount() {
@@ -26,6 +28,9 @@ class Favourite extends React.Component{
                     .then((res) => res.json())
                     .then((data) => {
                         console.log(data)
+                        if(data.message==="You don't have any doctors in your Favorite List"){
+                            this.setState({error:data.message})
+                        }
                         this.setState({favourite:data.doctors})
                         
                     })
@@ -52,7 +57,7 @@ class Favourite extends React.Component{
                         .catch((err) => {console.log(err)});
                 }
     render(){
-        const {favourite}=this.state
+        const {favourite,error}=this.state
         console.log(favourite)
         return(
             <div>
@@ -79,7 +84,16 @@ class Favourite extends React.Component{
                                 </div>
                             </div>
                             ))
-                        ):(null)}
+                        ):(
+                            error?(
+                                <div className='error'>
+                                    {error}
+                                </div>
+                            ):(
+                                <Spinner />
+                            )
+                            
+                       )}
                         
                     </div>
                     </div>
