@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/disease-fighter/static/css/main.527efc0f.chunk.css",
-    "main.js": "/disease-fighter/static/js/main.0a4c9b22.chunk.js",
-    "main.js.map": "/disease-fighter/static/js/main.0a4c9b22.chunk.js.map",
+    "main.css": "/disease-fighter/static/css/main.cc6c34d6.chunk.css",
+    "main.js": "/disease-fighter/static/js/main.af1da64d.chunk.js",
+    "main.js.map": "/disease-fighter/static/js/main.af1da64d.chunk.js.map",
     "runtime-main.js": "/disease-fighter/static/js/runtime-main.83656470.js",
     "runtime-main.js.map": "/disease-fighter/static/js/runtime-main.83656470.js.map",
     "static/css/2.1a4ef057.chunk.css": "/disease-fighter/static/css/2.1a4ef057.chunk.css",
@@ -12,7 +12,7 @@
     "static/js/3.677e008d.chunk.js.map": "/disease-fighter/static/js/3.677e008d.chunk.js.map",
     "index.html": "/disease-fighter/index.html",
     "static/css/2.1a4ef057.chunk.css.map": "/disease-fighter/static/css/2.1a4ef057.chunk.css.map",
-    "static/css/main.527efc0f.chunk.css.map": "/disease-fighter/static/css/main.527efc0f.chunk.css.map",
+    "static/css/main.cc6c34d6.chunk.css.map": "/disease-fighter/static/css/main.cc6c34d6.chunk.css.map",
     "static/js/2.022e9b74.chunk.js.LICENSE.txt": "/disease-fighter/static/js/2.022e9b74.chunk.js.LICENSE.txt",
     "static/media/AI.f51b4ab9.png": "/disease-fighter/static/media/AI.f51b4ab9.png",
     "static/media/Doctor.54e94bee.png": "/disease-fighter/static/media/Doctor.54e94bee.png",
@@ -28,7 +28,7 @@
     "static/js/runtime-main.83656470.js",
     "static/css/2.1a4ef057.chunk.css",
     "static/js/2.022e9b74.chunk.js",
-    "static/css/main.527efc0f.chunk.css",
-    "static/js/main.0a4c9b22.chunk.js"
+    "static/css/main.cc6c34d6.chunk.css",
+    "static/js/main.af1da64d.chunk.js"
   ]
 }
