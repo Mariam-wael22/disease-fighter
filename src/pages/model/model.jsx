@@ -48,7 +48,7 @@ class Model extends React.Component{
             formData.append("file",file);
             console.log(formData);
             fetch(
-                `https://diseasefighter.pythonanywhere.com/model/${modelname}`,
+                `https://thediseasefighter.herokuapp.com/model/${modelname}`,
                 {
                     method: "POST",
                     body: formData,

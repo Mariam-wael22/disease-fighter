@@ -53,7 +53,7 @@ nav{
     -ms-border-radius: 7px;
     -o-border-radius: 7px;
 }
-.logout-data p,label,img{
+.logout-data p,label{
     cursor: pointer;
 }
 .profile .logout{

@@ -40,7 +40,9 @@ const FirstScreen=()=>{
         </div>
         <div className='container1 nav-images d-flex'>
                     <div className='get-start col-lg-6 col-md-6'>
-                        <img src={FirstImage} alt="" />
+                        <h3 className='first-h3'>Disease Fighter</h3>
+                        <h3 className='second-h3'>Through <span style={{color: "#2baae9"}}>Ai</span> </h3>
+                        <p>intial diagnosis and advanced online medical solution</p>
                         <Link to='/home' className='btn active shadow p-3 mt-3 rounded'>Get Started</Link>
                     </div>
                     <div className='col-lg-6 col-md-6 d-none d-lg-block d-md-block'>

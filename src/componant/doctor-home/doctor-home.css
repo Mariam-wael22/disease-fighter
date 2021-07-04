@@ -20,6 +20,9 @@
 }
 .appointment-nav p{
     cursor: pointer;
+    
+}
+.first-header{
     color: #8A9EAD;
 }
 .meeting-session{

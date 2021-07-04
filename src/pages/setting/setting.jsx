@@ -34,8 +34,14 @@ class Setting extends React.Component{
                       .then((res) => res.json())
                       .then((data) => {
                           console.log(data)
-                          var obj=data.current_user
+                        var obj=data.current_user
                         this.setState({name:obj.name,location:obj.location,phone:obj.phone,about:obj.about,avatar:obj.avatar,avatarimg:obj.avatar,gender:obj.gender})
+                        if(window.localStorage.getItem("doctor")){
+                            this.setState({location:obj.clinic_location})
+                        }
+                        else if(!window.localStorage.getItem("doctor")){
+                            this.setState({location:obj.location})
+                        }
                         let dateOfweek=['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday']
                         data.current_user.available_dates.map((day)=>{
                             if(dateOfweek.includes(day)){

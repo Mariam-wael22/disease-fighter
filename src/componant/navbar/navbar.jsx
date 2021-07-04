@@ -6,7 +6,7 @@ import Logout from '../logout/logout';
 import SmallMenu from '../small-menu/small-menu'
 import Notification from '../notification/notification';
 import Search from '../search/search'
-import {Link} from 'react-router-dom'
+import {Link,withRouter} from 'react-router-dom'
 
 class Navbar extends React.Component{
     constructor(){
@@ -113,7 +113,7 @@ class Navbar extends React.Component{
                   ):(null)}
                   {active_logout?(
                     <div className='logout-data'>
-                      <div className='h-50 bg-white border-bottom p-3 d-flex'>
+                      <div className='h-50 bg-white border-bottom p-3 d-flex' onClick={()=>this.props.history.push('/setting')}>
                         <div>
                         <img src={userdata?(userdata.avatar):(null)} alt="avatar"/>
                         </div>
@@ -162,4 +162,4 @@ class Navbar extends React.Component{
         )
     }
 }
-export default Navbar;
+export default withRouter(Navbar);

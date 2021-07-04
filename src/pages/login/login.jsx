@@ -79,20 +79,6 @@ class Login extends React.Component{
                     <p class="text-danger">{error}</p>
                     </div>
                     </form>
-                    <div className='d-flex justify-content-center w-100 mb-2'>
-                        <label>or login with</label>
-                    </div>
-                    <div className='d-flex justify-content-center'>
-                        <div className='alt-login shadow'>
-                            <img src={g} alt='google'/>
-                        </div>
-                        <div className='alt-login shadow'>
-                            <img src={f} alt='facebook'/>
-                        </div>
-                        <div className='alt-login shadow'>
-                            <img src={t} alt='twitter'/>
-                        </div>
-                    </div>
                     <div className='d-flex justify-content-center'>
                     <label>Don't have an account?</label>
                     <Link to='/signup' className='signup-link'>SIGN UP</Link>

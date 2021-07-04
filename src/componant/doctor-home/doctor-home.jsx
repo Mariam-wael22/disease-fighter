@@ -14,8 +14,7 @@ const DcotorHome =({data,name})=> {
                 <div className='doctor-nav d-flex shadow rounded' onClick={()=>history.push('/model')}>
                 <div className='col-9 d-flex flex-column justify-content-center ps-2'>
                     <h5 className=''>Hello! Dr {name}</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                     At vero est nemo numquam explicabo</p>
+                    <p>we hope you will benefit from our help in the initial diagnosis</p>
                      <p className='btn button w-50 d-none d-lg-block d-md-block'>Show model</p>
                 </div>
                 <div className='col-3'>
@@ -25,8 +24,7 @@ const DcotorHome =({data,name})=> {
             <div className='doctor-nav d-flex shadow rounded'>
                 <div className='col-9 d-flex flex-column justify-content-center ps-2'>
                     <h5 className=' mb-1'>Hello! Dr {name}</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                     At vero est nemo numquam explicabo</p>
+                    <p>Welcome among us , we hope that you will find the help you need</p>
                      <p className='btn button w-50 d-none d-lg-block d-md-block'>Show Meeting</p>
                 </div>
                 <div className='col-3'>
@@ -61,7 +59,7 @@ const DcotorHome =({data,name})=> {
                 <div className='meeting-session-containt'>
                     <div className='d-flex meeting-session-header'>
                         <p className='col-1'></p>
-                        <div className='d-flex col-10'>
+                        <div className='d-flex col-10 first-header'>
                         <p className='col-3'>Patient Name</p>
                         <p className='col-3'>Date</p>
                         <p className='col-2'>Time</p>

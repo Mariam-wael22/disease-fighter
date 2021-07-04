@@ -34,8 +34,8 @@ header{
     margin-top: 33px;
 }
 .nav-images .get-start img{
-    width: 356px;
-    height: 160px;;
+    width: 300px;
+    height: 300px;
 }
 .first-screen-nav img{
     width: 141px;
@@ -47,6 +47,17 @@ header{
 }
 .get-start a{
     width: 200px;
+}
+.get-start h3{
+    font-size: 37px;
+}
+.first-h3{
+    font-weight: 400;
+}
+.get-start p{
+    font-size: 14px;
+    color: #8a9ead;
+    margin-bottom: 0px;
 }
 @media only screen and (max-width: 767px) {
     .nav-images .get-start img {
