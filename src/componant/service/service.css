@@ -1,0 +1,30 @@
+img{
+    width: 143px;
+    height: 54px;
+}
+.service .header p{
+    color: rgb(20 63 111);
+    font-size: 17px;
+    font-weight: 400;
+}
+.service a{
+    text-decoration: none;
+    color: rgb(20 63 111);
+}
+.service a:hover{
+    color: rgb(97, 197, 247);
+}
+.service li{
+    font-size: 21px;
+    font-weight: 500;
+    margin-top: 12px;
+}
+.service .data{
+    font-size: 17px;
+    font-weight: 300;
+}
+@media only screen and (max-width: 768px) {
+    .service .header {
+        padding: 0px 12px;
+    }
+}

@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="App">
       <Switch>
-      <Route exact path='/' component={FirstScreen} />
+      <Route exact path='/' component={FirstScreen}/>
       <Route exact path='/login' render={()=>(
              window.localStorage.getItem('token')?(
                history.goBack(),
